@@ -15,7 +15,7 @@ public class Enemyhealth : MonoBehaviour
 
   public void Update()
   {
-    if (HP.health == 0)
+    if (HP.health <= 0)
     {
       Destroy(gameObject);
     }

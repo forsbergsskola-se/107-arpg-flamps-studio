@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour
  Rigidbody rb;
  private float horizontalInput;
  private float verticalInput;
+ Camera cam;
 
  private Vector3 moveDirection;
 
@@ -38,6 +40,8 @@ public class Movement : MonoBehaviour
  void Update()
  {
   myInput();
+
+  
  }
 
  private void MovePlayer()
