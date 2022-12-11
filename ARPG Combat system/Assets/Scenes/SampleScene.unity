@@ -324,6 +324,7 @@ MonoBehaviour:
   axe: {fileID: 11400000, guid: 07ea670f45da5a24d93fdde83f298a69, type: 2}
   spear: {fileID: 11400000, guid: b7a59ea00d4b91349a42e6cf6e9f3c38, type: 2}
   HP: {fileID: 11400000, guid: 01235d807a424bc4d873c83cb8a08e30, type: 2}
+  equippedweapon: {fileID: 11400000, guid: fe87c6d4d1cfc62468833b05009767b5, type: 2}
   Swordweapon: {fileID: 431902205}
   Axeweapon: {fileID: 1902739957}
   Spearweapon: {fileID: 1330615818}
@@ -331,6 +332,11 @@ MonoBehaviour:
   enemy: {fileID: 1234591938}
   CurrentWeapon: 0
   CanAttack: 1
+--- !u!4 &939285018 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4273619690031322, guid: 60e8218091f83244c9bf9c8c2569a009, type: 3}
+  m_PrefabInstance: {fileID: 1948311150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +569,7 @@ MonoBehaviour:
   axe: {fileID: 11400000, guid: 07ea670f45da5a24d93fdde83f298a69, type: 2}
   spear: {fileID: 11400000, guid: b7a59ea00d4b91349a42e6cf6e9f3c38, type: 2}
   HP: {fileID: 11400000, guid: 01235d807a424bc4d873c83cb8a08e30, type: 2}
+  equippedweapon: {fileID: 0}
   Swordweapon: {fileID: 1955853850}
   Axeweapon: {fileID: 1902739957}
   Spearweapon: {fileID: 1330615818}
@@ -1108,39 +1115,47 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 825769128}
+    m_TransformParent: {fileID: 939285018}
     m_Modifications:
     - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.99009836
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9900986
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5058606
+      value: -0.05703157
       objectReference: {fileID: 0}
     - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9553466
+      value: 0.009727648
       objectReference: {fileID: 0}
     - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0080982065
+      value: 0.012252438
       objectReference: {fileID: 0}
     - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.50787735
       objectReference: {fileID: 0}
     - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.13264924
       objectReference: {fileID: 0}
     - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.03105358
       objectReference: {fileID: 0}
     - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.8505883
       objectReference: {fileID: 0}
     - target: {fileID: 6913953592303884725, guid: 6dc9301019a484f498309bc383e0b50a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
