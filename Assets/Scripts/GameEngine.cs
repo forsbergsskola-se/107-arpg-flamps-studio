@@ -1,39 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameEngine : MonoBehaviour
 {
-    HealthSystem healthSystem;
-    float regenTimer = 0;
+    HealthSystem _healthSystem;
+    float _regenTimer;
     public int amount2Regen = 1;
     void Start()
     {
-        this.healthSystem = new HealthSystem(100);
+        this._healthSystem = new HealthSystem(100);
         
-        Debug.Log("Health; " +healthSystem.GetHealth());
+        Debug.Log("Health; " +_healthSystem.GetHealth());
     }
     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            healthSystem.Damage(10);
-            Debug.Log("Damaged: " + healthSystem.GetHealth());
+            _healthSystem.Damage(10);
+            Debug.Log("Damaged: " + _healthSystem.GetHealth());
         }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            healthSystem.Heal(10);
-            Debug.Log("Healed: " + healthSystem.GetHealth());
+            _healthSystem.Heal(10);
+            Debug.Log("Healed: " + _healthSystem.GetHealth());
         }
         
-        regenTimer += Time.deltaTime;
-        if (regenTimer >= 1)
+        _regenTimer += Time.deltaTime;
+        if (_regenTimer >= 1)
         {
-            healthSystem.Regen(amount2Regen);
-            regenTimer = 0;
-            Debug.Log("Regened: " + healthSystem.GetHealth());
+            _healthSystem.Regen(amount2Regen);
+            _regenTimer = 0;
+            Debug.Log("Regened: " + _healthSystem.GetHealth());
         }
     }
 }
