@@ -6,35 +6,33 @@ public class GameEngine : MonoBehaviour
 {
     ManaSystem manaSystem;
     float regenTimer = 0;
+    public int manaCost = 10;
+    public int manaRefill = 10;
+    private int manaRegen = 1;
     void Start()
     {
         manaSystem = new ManaSystem(100);
-            
-            /*Debug.Log("Mana: "+manaSystem.GetMana());
-            manaSystem.manaUsed(10);
-            Debug.Log("Mana: "+manaSystem.GetMana());
-            manaSystem.manaRefill(1);
-            Debug.Log("Mana: "+manaSystem.GetMana());*/
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A)) //cast spell, use mana
         {
-            manaSystem.manaUsed(10);
+            manaSystem.manaUsed(manaCost); //The mana used to cast a spell
             Debug.Log("Used: " + manaSystem.GetMana());
         }
 
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H)) //use potion, refill mana
         {
-            manaSystem.manaRefill(10);
+            manaSystem.manaRestore(manaRefill); //The amount of mana restored using potion
             Debug.Log("Refilled: " + manaSystem.GetMana());
         }
         regenTimer += Time.deltaTime;
         if (regenTimer >= 1)
         {
-            manaSystem.Regen(1);
+            manaSystem.Regen(manaRegen);
             regenTimer = 0;
             Debug.Log("Regened: " + manaSystem.GetMana());
         }

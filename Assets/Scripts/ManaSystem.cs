@@ -19,9 +19,9 @@ public class ManaSystem
         _manaCurrent -= manaCost;
     }
 
-    public void manaRefill(int manaTopUp)
+    public void manaRestore(int manaRefill)
     {
-        _manaCurrent += manaTopUp;
+        _manaCurrent += manaRefill;
     }
     
     public void Regen(int regenAmount)
