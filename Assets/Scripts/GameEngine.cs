@@ -5,9 +5,12 @@ public class GameEngine : MonoBehaviour
     HealthSystem _healthSystem;
     float _regenTimer;
     public int amount2Regen = 1;
+
+    public HealthBar healthbar;
     void Start()
     {
         this._healthSystem = new HealthSystem(100);
+        healthbar.SetHealthMax(_healthSystem.GetHealth());
         
         Debug.Log("Health; " +_healthSystem.GetHealth());
     }
@@ -33,5 +36,7 @@ public class GameEngine : MonoBehaviour
             _regenTimer = 0;
             Debug.Log("Regened: " + _healthSystem.GetHealth());
         }
+        
+        healthbar.SetHealthCurrent(_healthSystem.GetHealth());
     }
 }
