@@ -8,7 +8,7 @@ public class GameEngine : MonoBehaviour
     float regenTimer = 0;
     public int manaCost = 10;
     public int manaRefill = 10;
-    private int manaRegen = 1;
+    [SerializeField] private int manaRegen = 1;
     void Start()
     {
         manaSystem = new ManaSystem(100);
