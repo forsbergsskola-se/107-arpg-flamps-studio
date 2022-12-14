@@ -10,11 +10,11 @@ public class GameEngine : MonoBehaviour
     {
         manaSystem = new ManaSystem(100);
             
-            Debug.Log("Mana: "+manaSystem.GetMana());
+            /*Debug.Log("Mana: "+manaSystem.GetMana());
             manaSystem.manaUsed(10);
             Debug.Log("Mana: "+manaSystem.GetMana());
             manaSystem.manaRefill(1);
-            Debug.Log("Mana: "+manaSystem.GetMana());
+            Debug.Log("Mana: "+manaSystem.GetMana());*/
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class GameEngine : MonoBehaviour
         regenTimer += Time.deltaTime;
         if (regenTimer >= 1)
         {
-            manaSystem.Regen(5);
+            manaSystem.Regen(1);
             regenTimer = 0;
             Debug.Log("Regened: " + manaSystem.GetMana());
         }
