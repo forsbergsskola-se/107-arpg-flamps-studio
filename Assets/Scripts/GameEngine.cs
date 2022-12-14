@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameEngine : MonoBehaviour
 {
     HealthSystem healthSystem;
+    float regenTimer = 0;
     void Start()
     {
         this.healthSystem = new HealthSystem(100);
@@ -24,6 +25,14 @@ public class GameEngine : MonoBehaviour
         {
             healthSystem.Heal(10);
             Debug.Log("Healed: " + healthSystem.GetHealth());
+        }
+        
+        regenTimer += Time.deltaTime;
+        if (regenTimer >= 1)
+        {
+            healthSystem.Regen(5);
+            regenTimer = 0;
+            Debug.Log("Regened: " + healthSystem.GetHealth());
         }
     }
 }

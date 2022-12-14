@@ -26,4 +26,10 @@ public class HealthSystem
         healthCurrent += healAmount;
         if (healthCurrent > healthMax) healthCurrent = healthMax;
     }
+    
+    public void Regen(int regenAmount)
+    {
+        healthCurrent += regenAmount;
+        if (healthCurrent > healthMax) healthCurrent = healthMax;
+    }
 }
