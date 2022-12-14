@@ -6,6 +6,7 @@ public class GameEngine : MonoBehaviour
 {
     HealthSystem healthSystem;
     float regenTimer = 0;
+    public int amount2Regen = 1;
     void Start()
     {
         this.healthSystem = new HealthSystem(100);
@@ -30,7 +31,7 @@ public class GameEngine : MonoBehaviour
         regenTimer += Time.deltaTime;
         if (regenTimer >= 1)
         {
-            healthSystem.Regen(5);
+            healthSystem.Regen(amount2Regen);
             regenTimer = 0;
             Debug.Log("Regened: " + healthSystem.GetHealth());
         }
