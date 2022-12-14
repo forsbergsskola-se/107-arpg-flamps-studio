@@ -1,24 +1,32 @@
 public class ManaSystem
 {
-    private int manaCurrent;
+    private int _manaCurrent;
+    private int _manaMax;
 
-    public ManaSystem(int manaCurrent)
+    public ManaSystem(int manaMax)
     {
-        this.manaCurrent = manaCurrent;
+        this._manaMax = manaMax;
+        _manaCurrent = manaMax;
     }
 
     public int GetMana()
     {
-        return manaCurrent;
+        return _manaCurrent;
     }
 
     public void manaUsed(int manaCost)
     {
-        manaCurrent -= manaCost;
+        _manaCurrent -= manaCost;
     }
 
     public void manaRefill(int manaTopUp)
     {
-        manaCurrent += manaTopUp;
+        _manaCurrent += manaTopUp;
+    }
+    
+    public void Regen(int regenAmount)
+    {
+        _manaCurrent += regenAmount;
+        if (_manaCurrent > _manaMax) _manaCurrent = _manaMax;
     }
 }
