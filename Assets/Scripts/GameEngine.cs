@@ -4,7 +4,9 @@ public class GameEngine : MonoBehaviour
 {
     HealthSystem _healthSystem;
     float _regenTimer;
-    public int amount2Regen = 1;
+    public int damageReceived = 10;
+    public int healthRestored = 10;
+    [SerializeField] private int amount2Regen = 1;
 
     public HealthBar healthbar;
     void Start()
@@ -19,13 +21,13 @@ public class GameEngine : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            _healthSystem.Damage(10);
+            _healthSystem.Damage(damageReceived); // Damage taken by player
             Debug.Log("Damaged: " + _healthSystem.GetHealth());
         }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            _healthSystem.Heal(10);
+            _healthSystem.Heal(healthRestored); // 
             Debug.Log("Healed: " + _healthSystem.GetHealth());
         }
         
