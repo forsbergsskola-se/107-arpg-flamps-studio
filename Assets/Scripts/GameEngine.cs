@@ -6,7 +6,7 @@ public class GameEngine : MonoBehaviour
     float _regenTimer;
     public int manaCost = 10;
     public int manaRefill = 10;
-    [SerializeField] private int manaRegen = 1;
+    [SerializeField] private int mana2Regen = 1;
 
     public ManaBar manaBar;
     void Start()
@@ -32,9 +32,10 @@ public class GameEngine : MonoBehaviour
         _regenTimer += Time.deltaTime;
         if (_regenTimer >= 1)
         {
-            _manaSystem.Regen(manaRegen);
+            _manaSystem.Regen(mana2Regen);
             _regenTimer = 0;
             Debug.Log("Regened: " + _manaSystem.GetMana());
         }
+        manaBar.SetManaCurrent(_manaSystem.GetMana());
     }
 }
