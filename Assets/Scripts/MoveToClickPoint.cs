@@ -8,12 +8,12 @@ public class MoveToClickPoint : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private float distanceToTarget = 2f;
     
-    private Transform target;
-    private Camera mainCam;
+    private Transform _target;
+    private Camera _mainCam;
         
     void Awake() 
     {
-        mainCam = Camera.main;
+        _mainCam = Camera.main;
         player = GetComponent<NavMeshAgent>();
     }
         
@@ -23,14 +23,14 @@ public class MoveToClickPoint : MonoBehaviour
 
         GetDestination();
 
-        if (target != null)
+        if (_target != null)
         {
-            var between = target.position - transform.position;
+            var between = _target.position - transform.position;
             
             if(between.magnitude <= distanceToTarget)
                 return;
             
-            player.SetDestination(target.position);
+            player.SetDestination(_target.position);
         }
     }
 
@@ -39,17 +39,17 @@ public class MoveToClickPoint : MonoBehaviour
         if (!Input.GetMouseButtonDown(1)) 
             return;
         
-        if (!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out var hit)) 
+        if (!Physics.Raycast(_mainCam.ScreenPointToRay(Input.mousePosition), out var hit)) 
             return;
             
-        if(hit.collider.CompareTag("GoTo")) //This means we hit a follow Target
+        if(hit.collider.CompareTag("GoTo")) // This means we hit a follow Target
         {
-            Debug.Log("Target assigned : "+hit.transform.gameObject.name); 
-            target = hit.transform;
+            Debug.Log("Target assigned : " + hit.transform.gameObject.name); 
+            _target = hit.transform;
         }
         else
         {
-            target = null;
+            _target = null;
             player.SetDestination(hit.point);
         }
     }
