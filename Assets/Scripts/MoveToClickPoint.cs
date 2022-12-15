@@ -7,7 +7,7 @@ public class MoveToClickPoint : MonoBehaviour
     [SerializeField] private NavMeshAgent player;
     [SerializeField] private Animator anim;
     [SerializeField] private float distanceThreshold = 2f;
-    private static readonly int IsWalking = Animator.StringToHash("isWalking");
+    
     private Transform _target;
     private Camera _mainCam;
         
@@ -20,14 +20,14 @@ public class MoveToClickPoint : MonoBehaviour
     void Update()
     {
         
-        anim.SetFloat(IsWalking, player.velocity.magnitude / player.speed);
+        anim.SetFloat("isWalking", player.velocity.magnitude / player.speed);
 
-        SetTarget();
+        GetDestination();
 
         if (_target == null) return;
     }
 
-    private void SetTarget()
+    private void GetDestination()
     {
         if (!Input.GetMouseButtonDown(1)) 
             return;
