@@ -6,25 +6,32 @@ public class MoveToClickPoint : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent player;
     [SerializeField] private Animator anim;
-    [SerializeField] private float distanceThreshold = 2f;
+    [SerializeField] private float distanceToTarget = 2f;
     
-    private Transform _target;
-    private Camera _mainCam;
+    private Transform target;
+    private Camera mainCam;
         
     void Awake() 
     {
-        _mainCam = Camera.main;
+        mainCam = Camera.main;
         player = GetComponent<NavMeshAgent>();
     }
         
     void Update()
     {
-        
-        anim.SetFloat("isWalking", player.velocity.magnitude / player.speed);
+        anim.SetFloat("isWalking", player.velocity.magnitude/player.speed);
 
         GetDestination();
 
-        if (_target == null) return;
+        if (target != null)
+        {
+            var between = target.position - transform.position;
+            
+            if(between.magnitude <= distanceToTarget)
+                return;
+            
+            player.SetDestination(target.position);
+        }
     }
 
     private void GetDestination()
@@ -32,17 +39,17 @@ public class MoveToClickPoint : MonoBehaviour
         if (!Input.GetMouseButtonDown(1)) 
             return;
         
-        if (!Physics.Raycast(_mainCam.ScreenPointToRay(Input.mousePosition), out var hit)) 
+        if (!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out var hit)) 
             return;
             
-        if (hit.collider.CompareTag("GoTo")) // This means we hit a follow Target
+        if(hit.collider.CompareTag("GoTo")) //This means we hit a follow Target
         {
-            Debug.Log("Target assigned : " + hit.transform.gameObject.name); 
-            _target = hit.transform;
+            Debug.Log("Target assigned : "+hit.transform.gameObject.name); 
+            target = hit.transform;
         }
         else
         {
-            _target = null;
+            target = null;
             player.SetDestination(hit.point);
         }
     }
