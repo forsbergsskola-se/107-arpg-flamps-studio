@@ -10,7 +10,8 @@ public class MoveToClickPoint : MonoBehaviour
     
     private Transform _target;
     private Camera _mainCam;
-        
+    private static readonly int IsWalking = Animator.StringToHash("isWalking");
+
     void Awake() 
     {
         _mainCam = Camera.main;
@@ -19,7 +20,7 @@ public class MoveToClickPoint : MonoBehaviour
         
     void Update()
     {
-        anim.SetFloat("isWalking", player.velocity.magnitude/player.speed);
+        anim.SetFloat(IsWalking, player.velocity.magnitude / player.speed);
 
         GetDestination();
 
