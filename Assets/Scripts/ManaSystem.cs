@@ -17,11 +17,13 @@ public class ManaSystem
     public void manaUsed(int manaCost)
     {
         _manaCurrent -= manaCost;
+        if (_manaCurrent < 0) _manaCurrent = 0;
     }
 
     public void manaRestore(int manaRefill)
     {
         _manaCurrent += manaRefill;
+        if (_manaCurrent > _manaMax) _manaCurrent = _manaMax;
     }
     
     public void Regen(int regenAmount)
