@@ -23,17 +23,7 @@ public class MoveToClickPoint : MonoBehaviour
     {
         anim.SetFloat(IsWalking, player.velocity.magnitude / player.speed);
 
-        GetDestination();
-
-        if (_target != null)
-        {
-            var between = _target.position - transform.position;
-
-            if (between.magnitude <= distanceToTarget)
-                return;
-
-            player.SetDestination(_target.position);
-        }
+        GetAndSetTarget();
     }
 
     private void GetDestination()
@@ -54,5 +44,24 @@ public class MoveToClickPoint : MonoBehaviour
             _target = null;
             player.SetDestination(hit.point);
         }
+    }
+
+    private void SetDestination()
+    {
+        if (_target != null)
+        {
+            var between = _target.position - transform.position;
+
+            if (between.magnitude <= distanceToTarget)
+                return;
+
+            player.SetDestination(_target.position);
+        }
+    }
+
+    private void GetAndSetTarget()
+    {
+        GetDestination();
+        SetDestination();
     }
 }
