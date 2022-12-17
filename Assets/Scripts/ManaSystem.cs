@@ -5,7 +5,7 @@ public class ManaSystem
 
     public ManaSystem(int manaMax)
     {
-        this._manaMax = manaMax;
+        _manaMax = manaMax;
         _manaCurrent = manaMax;
     }
 
@@ -25,7 +25,7 @@ public class ManaSystem
         _manaCurrent += manaRefill;
         if (_manaCurrent > _manaMax) _manaCurrent = _manaMax;
     }
-    
+
     public void Regen(int regenAmount)
     {
         _manaCurrent += regenAmount;

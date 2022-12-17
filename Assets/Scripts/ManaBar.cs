@@ -15,5 +15,4 @@ public class ManaBar : MonoBehaviour
     {
         slider.value = mana;
     }
-
 }

@@ -2,21 +2,23 @@ using UnityEngine;
 
 public class GameEngine : MonoBehaviour
 {
-    ManaSystem _manaSystem;
-    float _regenTimer;
+    private ManaSystem _manaSystem;
+    private float _regenTimer;
     public int manaCost = 10;
     public int manaRefill = 10;
     [SerializeField] private int mana2Regen = 1;
 
     public ManaBar manaBar;
-    void Start()
+
+    private void Start()
     {
-        this._manaSystem = new ManaSystem(100);
+        _manaSystem = new ManaSystem(100);
         manaBar.SetManaMax(_manaSystem.GetMana());
-        
-        Debug.Log(("Mana: " + _manaSystem.GetMana()));
+
+        Debug.Log("Mana: " + _manaSystem.GetMana());
     }
-    void Update()
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A)) //cast spell, use mana
         {
@@ -29,6 +31,7 @@ public class GameEngine : MonoBehaviour
             _manaSystem.manaRestore(manaRefill); //The amount of mana restored using potion
             Debug.Log("Refilled: " + _manaSystem.GetMana());
         }
+
         _regenTimer += Time.deltaTime;
         if (_regenTimer >= 1)
         {
@@ -36,6 +39,7 @@ public class GameEngine : MonoBehaviour
             _regenTimer = 0;
             Debug.Log("Regened: " + _manaSystem.GetMana());
         }
+
         manaBar.SetManaCurrent(_manaSystem.GetMana());
     }
 }
