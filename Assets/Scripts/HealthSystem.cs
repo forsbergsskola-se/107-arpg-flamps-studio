@@ -6,7 +6,7 @@ public class HealthSystem
 
     public HealthSystem(int healthMax)
     {
-        this._healthMax = healthMax;
+        _healthMax = healthMax;
         _healthCurrent = healthMax;
     }
 
@@ -26,7 +26,7 @@ public class HealthSystem
         _healthCurrent += healAmount;
         if (_healthCurrent > _healthMax) _healthCurrent = _healthMax;
     }
-    
+
     public void Regen(int regenAmount)
     {
         _healthCurrent += regenAmount;

@@ -2,22 +2,23 @@ using UnityEngine;
 
 public class GameEngine : MonoBehaviour
 {
-    HealthSystem _healthSystem;
-    float _regenTimer;
+    private HealthSystem _healthSystem;
+    private float _regenTimer;
     public int damageReceived = 10;
     public int healthRestored = 10;
     [SerializeField] private int amount2Regen = 1;
 
     public HealthBar healthbar;
-    void Start()
+
+    private void Start()
     {
-        this._healthSystem = new HealthSystem(100);
+        _healthSystem = new HealthSystem(100);
         healthbar.SetHealthMax(_healthSystem.GetHealth());
-        
-        Debug.Log("Health; " +_healthSystem.GetHealth());
+
+        Debug.Log("Health; " + _healthSystem.GetHealth());
     }
-    
-    void Update()
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -30,7 +31,7 @@ public class GameEngine : MonoBehaviour
             _healthSystem.Heal(healthRestored); // 
             Debug.Log("Healed: " + _healthSystem.GetHealth());
         }
-        
+
         _regenTimer += Time.deltaTime;
         if (_regenTimer >= 1)
         {
@@ -38,7 +39,7 @@ public class GameEngine : MonoBehaviour
             _regenTimer = 0;
             Debug.Log("Regened: " + _healthSystem.GetHealth());
         }
-        
+
         healthbar.SetHealthCurrent(_healthSystem.GetHealth());
     }
 }
