@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -19,7 +20,13 @@ public class Attack : MonoBehaviour
     public GameObject enemy;
     public WeaponType currentWeapon;
     public bool canAttack = true;
+    private Animator _anim;
     private static readonly int Attack1 = Animator.StringToHash("Attack");
+
+    public void Start()
+    {
+         _anim = player.GetComponent<Animator>();
+    }
 
     public void Update()
     {
@@ -32,8 +39,8 @@ public class Attack : MonoBehaviour
     private void Swing()
     {
         canAttack = false;
-        var anim = player.GetComponent<Animator>();
-        anim.SetTrigger(Attack1);
+        
+        _anim.SetTrigger(Attack1);
         //HP.health -= equippedweapon.damage;
 
 
