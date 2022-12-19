@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SwordSpecial : MonoBehaviour
@@ -8,13 +9,19 @@ public class SwordSpecial : MonoBehaviour
     public GameObject swordWeapon;
     public GameObject weaponHolder;
     private static readonly int Special = Animator.StringToHash("Special");
+    private Animator _anim;
+
+    public void Start()
+    {
+        _anim = player.GetComponent<Animator>();
+    }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && swordWeapon.transform.IsChildOf(weaponHolder.transform))
         {
-            var anim = player.GetComponent<Animator>();
-            anim.SetTrigger(Special);
+             
+            _anim.SetTrigger(Special);
         }
     }
 

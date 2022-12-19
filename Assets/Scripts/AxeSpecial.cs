@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AxeSpecial : MonoBehaviour
@@ -8,13 +9,19 @@ public class AxeSpecial : MonoBehaviour
     public GameObject axeWeapon;
     public GameObject weaponHolder;
     private static readonly int Special2 = Animator.StringToHash("Special2");
+    private Animator _anim;
+
+    public void Start()
+    {
+        _anim = player.GetComponent<Animator>();
+    }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && axeWeapon.transform.IsChildOf(weaponHolder.transform))
         {
-            var anim = player.GetComponent<Animator>();
-            anim.SetTrigger(Special2);
+             _anim = player.GetComponent<Animator>();
+            _anim.SetTrigger(Special2);
         }
     }
 
