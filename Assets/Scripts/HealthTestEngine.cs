@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameEngine : MonoBehaviour
+public class HealthTestEngine : MonoBehaviour
 {
     private HealthSystem _healthSystem;
     private float _regenTimer;
