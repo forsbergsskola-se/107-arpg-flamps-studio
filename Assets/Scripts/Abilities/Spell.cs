@@ -1,7 +1,8 @@
+
 using UnityEngine;
 //attach to spellPrefabs
 [RequireComponent(typeof(SphereCollider))]
-    [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class Spell : MonoBehaviour
 {
     public SpellSO spellToCast;

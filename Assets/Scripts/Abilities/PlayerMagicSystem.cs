@@ -1,7 +1,9 @@
+
 using UnityEngine;
 //attach to player
 public class PlayerMagicSystem : MonoBehaviour
 {
+    //spellPrefabs here
     [SerializeField] private Spell spellToCast;
     
     [SerializeField] private float maxMana = 100f;
