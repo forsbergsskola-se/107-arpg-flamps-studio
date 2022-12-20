@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 //attach to player
 public class PlayerMagicSystem : MonoBehaviour
