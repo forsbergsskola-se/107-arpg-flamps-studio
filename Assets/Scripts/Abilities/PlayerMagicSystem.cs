@@ -18,14 +18,23 @@ public class PlayerMagicSystem : MonoBehaviour
     [SerializeField] private Transform castPoint;
     
     private bool _castingMagic;
+    public Skill SkillFball;
+    public GameObject SpawnLocation;
 
     private void Awake()
     {
         currentMana = maxMana;
+        SkillFball.Initialize(SpawnLocation);
     }
 
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            // SkillFball.Use();
+        }
+
         bool isSpellCastingHeldDown = Input.GetKeyDown(KeyCode.Alpha1);
         bool hasEnoughMana = currentMana - spellToCast.spellToCast.manaCost >= 0f;   
         
@@ -54,6 +63,8 @@ public class PlayerMagicSystem : MonoBehaviour
                 if (currentMana > maxMana) currentMana = maxMana;
             }
         }
+        
+        
     }
 
     private void CastSpell()

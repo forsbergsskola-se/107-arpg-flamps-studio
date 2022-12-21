@@ -15,5 +15,5 @@ MonoBehaviour:
   damageAmount: 10
   manaCost: 5
   lifetime: 2
-  speed: 15
+  speed: 30
   spellRadius: 0.5
