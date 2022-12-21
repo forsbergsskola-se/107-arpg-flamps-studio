@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class SwordSpecial : MonoBehaviour
@@ -11,12 +10,12 @@ public class SwordSpecial : MonoBehaviour
     private static readonly int Special = Animator.StringToHash("Special");
     private Animator _anim;
 
-    public void Start()
+     void Start()
     {
         _anim = player.GetComponent<Animator>();
     }
 
-    public void Update()
+     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && swordWeapon.transform.IsChildOf(weaponHolder.transform))
         {
@@ -28,9 +27,8 @@ public class SwordSpecial : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        var anim = player.GetComponent<Animator>();
 
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Sword Special"))
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Sword Special"))
             // HP.health -= equippedweapon.damage;
             Debug.Log("Hit");
     }

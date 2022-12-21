@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
-public class Attack : MonoBehaviour
+public class Hero : MonoBehaviour
 {
     public enum WeaponType
     {
@@ -11,12 +10,9 @@ public class Attack : MonoBehaviour
     }
 
     public Sword sword;
-
     public Axe axe;
-
     //public Health HP;
     public EquippedWeapon equippedWeapon;
-    public GameObject player;
     public GameObject enemy;
     public WeaponType currentWeapon;
     public bool canAttack = true;
@@ -25,15 +21,18 @@ public class Attack : MonoBehaviour
 
     public void Start()
     {
-         _anim = player.GetComponent<Animator>();
+         _anim = GetComponent<Animator>();
     }
 
     public void Update()
     {
-        var distance = enemy.transform.position - player.transform.position;
+
         if (Input.GetMouseButtonDown(0))
+        {
+            var distance = enemy.transform.position - transform.position;
             if (canAttack && distance.magnitude < 2.5f)
                 Swing();
+        }
     }
 
     private void Swing()

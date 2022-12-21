@@ -10,11 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 457e96276484c4e46aeb70e393d73b62, type: 3}
-  m_Name: Equipped Weapon
+  m_Name: EquippedWeapon
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   damage: 100
-=======
-  damage: 20
->>>>>>> Stashed changes
-  attackcooldown: 1
+  attackCooldown: 1
