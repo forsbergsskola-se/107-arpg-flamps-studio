@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class WeaponAttach : MonoBehaviour
 {
-    public Sword sword;
-    public Axe axe;
-    public GameObject swordWeapon;
-    public GameObject axeWeapon;
-    public GameObject weaponHolder;
-    public EquippedWeapon currentWeapon;
+    public Sword sword; 
+    public Axe axe; 
+    public GameObject swordWeapon; //the sword prefab (your choice)
+    public GameObject axeWeapon; // the axe prefab (your choice)
+    public GameObject weaponHolder; //empty object attached to player arm
+    public EquippedWeapon currentWeapon; 
 
     
     //the point of this script is to give an equipped weapon stats (such as damage and speed) 
@@ -15,8 +15,10 @@ public class WeaponAttach : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1)) axeWeapon.transform.SetParent(weaponHolder.transform);
+        if (Input.GetMouseButtonDown(1)) axeWeapon.transform.SetParent(weaponHolder.transform); //attaches weapon of choice to weaponHolder.
+        //(using axe for testing purposes only)
 
+        //code below changes equipped weapon scriptable object to match weapon type.
         if (swordWeapon.transform.IsChildOf(weaponHolder.transform))
         {
             currentWeapon.damage = sword.damage;

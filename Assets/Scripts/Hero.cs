@@ -9,12 +9,12 @@ public class Hero : MonoBehaviour
         Axe
     }
 
+    // all of these are needed
     public Sword sword;
     public Axe axe;
     //public Health HP;
     public EquippedWeapon equippedWeapon;
     public GameObject enemy;
-    public WeaponType currentWeapon;
     public bool canAttack = true;
     private Animator _anim;
     private static readonly int Attack1 = Animator.StringToHash("Attack");
@@ -27,7 +27,8 @@ public class Hero : MonoBehaviour
     public void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+         //checks if player is close enough to allow attacking and attacks if yes.
+        if (Input.GetMouseButtonDown(0)) //condition will have to be changed to match the player movement from stewart.
         {
             var distance = enemy.transform.position - transform.position;
             if (canAttack && distance.magnitude < 2.5f)
@@ -35,7 +36,7 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void Swing()
+    private void Swing() //plays the animation for attacking and activates attack cooldown.
     {
         canAttack = false;
         

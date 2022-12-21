@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SwordSpecial : MonoBehaviour
 {
+    //all needed
     //public Health HP;
     public GameObject player;
     public EquippedWeapon equippedWeapon;
@@ -15,7 +16,7 @@ public class SwordSpecial : MonoBehaviour
         _anim = player.GetComponent<Animator>();
     }
 
-     void Update()
+     void Update() //lets you use special weapon ability by pressing 1, as long as its child of weaponHolder.
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && swordWeapon.transform.IsChildOf(weaponHolder.transform))
         {
@@ -25,7 +26,7 @@ public class SwordSpecial : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerEnter(Collider col) // makes the collider deal damage as long as the animation is still playing.
     {
 
         if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Sword Special"))
