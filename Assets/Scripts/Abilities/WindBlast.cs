@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WindBlast : Spell
 {
-
     private void Awake()
     {
         MyCollider = GetComponent<SphereCollider>();
@@ -13,15 +10,15 @@ public class WindBlast : Spell
 
         MyRigidbody = GetComponent<Rigidbody>();
         MyRigidbody.isKinematic = true;
-        
-        Destroy(this.gameObject, spellToCast.lifetime);
+
+        Destroy(gameObject, spellToCast.lifetime);
     }
 
     private void Update()
     {
         if (spellToCast.speed > 0) transform.Translate(Vector3.forward * (spellToCast.speed * Time.deltaTime));
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         //Apply spell effects to whatever we hit.
@@ -30,9 +27,8 @@ public class WindBlast : Spell
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            HealthComponent enemyHealth = other.GetComponent<HealthComponent>();
+            var enemyHealth = other.GetComponent<HealthComponent>();
             enemyHealth.TakeDamage(spellToCast.damageAmount);
         }
-        
     }
 }

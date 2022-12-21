@@ -1,43 +1,33 @@
-
-using Unity.VisualScripting;
 using UnityEngine;
+
 //attach to player
 public class PlayerMagicSystem : MonoBehaviour
 {
     //spellPrefabs here
     [SerializeField] private Spell spellToCast;
-    
+
     [SerializeField] private float maxMana = 100f;
     [SerializeField] private float currentMana;
     [SerializeField] private float manaRechargeRate = 2f;
     [SerializeField] private float timeToWaitForRecharge = 1f;
-    private float _currentManaRechageTimer;
     [SerializeField] private float timeBetweenCast = 2f;
-    private float _currentCastTimer;
-        
+
     [SerializeField] private Transform castPoint;
-    
+
     private bool _castingMagic;
-    public Skill SkillFball;
-    public GameObject SpawnLocation;
+    private float _currentCastTimer;
+    private float _currentManaRechageTimer;
 
     private void Awake()
     {
         currentMana = maxMana;
-        SkillFball.Initialize(SpawnLocation);
     }
 
     private void Update()
     {
+        var isSpellCastingHeldDown = Input.GetKeyDown(KeyCode.Alpha1);
+        var hasEnoughMana = currentMana - spellToCast.spellToCast.manaCost >= 0f;
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            // SkillFball.Use();
-        }
-
-        bool isSpellCastingHeldDown = Input.GetKeyDown(KeyCode.Alpha1);
-        bool hasEnoughMana = currentMana - spellToCast.spellToCast.manaCost >= 0f;   
-        
         if (!_castingMagic && isSpellCastingHeldDown && hasEnoughMana)
         {
             _castingMagic = true;
@@ -63,13 +53,10 @@ public class PlayerMagicSystem : MonoBehaviour
                 if (currentMana > maxMana) currentMana = maxMana;
             }
         }
-        
-        
     }
 
     private void CastSpell()
     {
         Instantiate(spellToCast, castPoint.position, castPoint.rotation);
     }
-        
 }
