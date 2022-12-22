@@ -1,19 +1,18 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-//
-// Compo[typeof(Enemy)]
-// public class EnemyBoss : MonoBehaviour
-// {
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         
-//     }
-//
-//     // Update is called once per frame
-//     void Update()
-//     {
-//         
-//     }
-// }
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyBoss : Enemy
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
