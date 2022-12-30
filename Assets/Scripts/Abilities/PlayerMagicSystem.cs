@@ -1,10 +1,11 @@
+
 using UnityEngine;
 
 //attach to player
 public class PlayerMagicSystem : MonoBehaviour
 {
     //spellPrefabs here
-    [SerializeField] private Spell spellToCast;
+    [SerializeField] private Spell[] spellToCast;
 
     [SerializeField] private float maxMana = 100f;
     [SerializeField] private float currentMana;
@@ -25,38 +26,39 @@ public class PlayerMagicSystem : MonoBehaviour
 
     private void Update()
     {
-        var isSpellCastingHeldDown = Input.GetKeyDown(KeyCode.Alpha1);
-        var hasEnoughMana = currentMana - spellToCast.spellToCast.manaCost >= 0f;
-
-        if (!_castingMagic && isSpellCastingHeldDown && hasEnoughMana)
+        for (int i = 0; i < spellToCast.Length; i++)
         {
-            _castingMagic = true;
-            currentMana -= spellToCast.spellToCast.manaCost;
-            _currentCastTimer = 0;
-            _currentManaRechageTimer = 0;
-            CastSpell();
-        }
-
-        if (_castingMagic)
-        {
-            _currentCastTimer += Time.deltaTime;
-            if (_currentCastTimer > timeBetweenCast) _castingMagic = false;
-        }
-
-        if (currentMana < maxMana && !_castingMagic && !isSpellCastingHeldDown)
-        {
-            _currentManaRechageTimer += Time.deltaTime;
-
-            if (_currentManaRechageTimer > timeToWaitForRecharge)
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
-                currentMana += manaRechargeRate * Time.deltaTime;
-                if (currentMana > maxMana) currentMana = maxMana;
+                var hasEnoughMana = currentMana - spellToCast[i].spellToCast.manaCost >= 0f;
+        
+                if (!_castingMagic && hasEnoughMana)
+                {
+                    _castingMagic = true;
+                    currentMana -= spellToCast[i].spellToCast.manaCost;
+                    _currentCastTimer = 0;
+                }
+                _currentManaRechageTimer = 0;
+                Instantiate(spellToCast[i], castPoint.position, castPoint.rotation);
+
+            }
+
+            if (_castingMagic)
+            {
+                _currentCastTimer += Time.deltaTime;
+                if (_currentCastTimer > timeBetweenCast) _castingMagic = false;
+            }
+
+            if (currentMana < maxMana && !_castingMagic)
+            {
+                _currentManaRechageTimer += Time.deltaTime;
+
+                if (_currentManaRechageTimer > timeToWaitForRecharge)
+                {
+                    currentMana += manaRechargeRate * Time.deltaTime;
+                    if (currentMana > maxMana) currentMana = maxMana;
+                }
             }
         }
-    }
-
-    private void CastSpell()
-    {
-        Instantiate(spellToCast, castPoint.position, castPoint.rotation);
     }
 }
