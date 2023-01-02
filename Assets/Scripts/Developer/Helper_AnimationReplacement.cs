@@ -16,7 +16,8 @@ namespace Developer
             if (Selection.activeObject is AnimatorController animatorController)
             {
                 Debug.Log("[Helper] Initiating Replacement Dialog on: " + animatorController.name);
-                ShowWindow()
+                Debug.Log("[]");
+                // ShowWindow()
                 // string inputText = "";
                 // bool checkboxValue = false;
                 // int result = EditorUtility.DisplayDialogComplex("My Dialog", "Enter some text and choose an option:",
