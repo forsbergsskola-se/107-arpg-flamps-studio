@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(Rigidbody), typeof(Collider))]
 public class Enemy : NPC /*, IHealth */
 {
-    
-    public float damage = 7;
-    public float maxHealth = 100;
-    
+    [Header("Stats")]
+    [Range(1, 100)] public float damage = 7;
+    [Range(1, 500)] public float maxHealth = 100;
     
     protected float CurHealth;
 
@@ -22,8 +20,8 @@ public class Enemy : NPC /*, IHealth */
     protected Animator Anim;
     private static readonly int CurVelocity = Animator.StringToHash("curVelocity");
     
-    
-
+    // [Header("Animations")]
+    // public 
 
     private void Awake()
     {
@@ -39,31 +37,10 @@ public class Enemy : NPC /*, IHealth */
     
     // Start is called before the first frame update
     void Start()
-    { 
-        // Debug
-        _dbgBtnsDict = new Dictionary<string, Action>
-        {
-            { "Damage by 5", delegate
-                {
-                    Hurt(5);
-                    Debug.Log($"Ouch Pain, {nameof(CurHealth)} = {CurHealth}");
-                }
-            },           
-            { "Kill", delegate
-                {
-                    Die();
-                    Debug.Log($"EXTREMELY PAIN, is dead");
-                }
-            },
-            { "Move (AddForce)", delegate
-                {
-                   RigBod.velocity += -transform.forward * 2;
-                    Debug.Log($"Weeeee");
-                }
-            }
-        };
+    {
+   
     }
-    
+
     // Removes health and calls OnPostHurt
     void Hurt(float healthPoints)
     {
@@ -99,6 +76,6 @@ public class Enemy : NPC /*, IHealth */
 
     private void OnGUI()
     {
-        DebugButtons.ListButtons(_dbgBtnsDict);
+        // DevDebugBtnList.DrawBtnDict(_dbgBtnsDict);
     }
 }
