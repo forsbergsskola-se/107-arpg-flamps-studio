@@ -4,8 +4,6 @@ using UnityEngine.AI;
     
 public class MoveToClickPoint : MonoBehaviour
 {
-    public AudioSource audioSource;
-    
     [SerializeField] private NavMeshAgent player;
     [SerializeField] private Animator anim;
     [SerializeField] private float distanceToTarget = 2f;
@@ -28,31 +26,13 @@ public class MoveToClickPoint : MonoBehaviour
         if (target != null)
         {
             var between = target.position - transform.position;
-        
+            
             if(between.magnitude <= distanceToTarget)
                 return;
-        
+            
             player.SetDestination(target.position);
         }
-
-        // Play the footstep sound if the player is moving
-        if (player.velocity.magnitude > 0)
-        {
-            // Get the distance the player has moved since the last frame
-            float distanceMoved = (transform.position - previousPosition).magnitude;
-
-            // If the player has moved more than a certain distance, play the footstep sound
-            if (distanceMoved > footstepDistance)
-            {
-                audioSource.Play();
-                previousPosition = transform.position;
-            }
-        }
     }
-
-    private Vector3 previousPosition;
-    public float footstepDistance = 0.5f;
-
 
     private void GetDestination()
     {
