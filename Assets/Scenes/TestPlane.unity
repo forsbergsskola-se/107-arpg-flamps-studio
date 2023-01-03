@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -622,6 +622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MummyCore (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
 --- !u!4 &191327784 stripped
@@ -971,6 +975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BombCore (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3144835332462973390, guid: 92e40342bfd8dc041919ebb8c43f7727, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3144835332462973391, guid: 92e40342bfd8dc041919ebb8c43f7727, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1166,6 +1174,10 @@ PrefabInstance:
     - target: {fileID: 3144835332462973390, guid: 92e40342bfd8dc041919ebb8c43f7727, type: 3}
       propertyPath: m_Name
       value: BombCore (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144835332462973390, guid: 92e40342bfd8dc041919ebb8c43f7727, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3144835332462973391, guid: 92e40342bfd8dc041919ebb8c43f7727, type: 3}
       propertyPath: m_RootOrder
@@ -1965,6 +1977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MummyCore (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
 --- !u!1 &784134508
@@ -2102,6 +2118,10 @@ PrefabInstance:
     - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
       propertyPath: m_Name
       value: MummyCore
+      objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
@@ -2640,6 +2660,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MummyCore (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
 --- !u!1 &996593613
@@ -2846,6 +2870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MummyCore (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
 --- !u!1001 &1111915499
@@ -2907,6 +2935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MummyCore (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
 --- !u!1001 &1157407065
@@ -2919,6 +2951,10 @@ PrefabInstance:
     - target: {fileID: 3144835332462973390, guid: 92e40342bfd8dc041919ebb8c43f7727, type: 3}
       propertyPath: m_Name
       value: BombCore
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144835332462973390, guid: 92e40342bfd8dc041919ebb8c43f7727, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3144835332462973391, guid: 92e40342bfd8dc041919ebb8c43f7727, type: 3}
       propertyPath: m_RootOrder
@@ -3184,6 +3220,10 @@ PrefabInstance:
     - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
       propertyPath: m_Name
       value: MummyCore (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
@@ -4028,6 +4068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MummyCore (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
 --- !u!4 &1714018118 stripped
@@ -4284,6 +4328,10 @@ PrefabInstance:
     - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
       propertyPath: m_Name
       value: MummyCore (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
@@ -4553,6 +4601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MummyCore (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
 --- !u!1001 &2006103471
@@ -4614,6 +4666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MummyCore (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
 --- !u!1001 &2007892397
@@ -4674,6 +4730,10 @@ PrefabInstance:
     - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
       propertyPath: m_Name
       value: MummyCore (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 404144791793892109, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c78916951c81945b3f664f6242fe1a, type: 3}
@@ -5362,6 +5422,22 @@ MonoBehaviour:
   player: {fileID: 1896802862358980}
   anim: {fileID: 1896802862358983}
   distanceToTarget: 2
+--- !u!114 &1896802862358986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896802862358975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84dabf06ed8ddea4b88038744ca508c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sword: {fileID: 11400000, guid: 4256d54261f566347a47d39080fff734, type: 2}
+  axe: {fileID: 11400000, guid: 07ea670f45da5a24d93fdde83f298a69, type: 2}
+  equippedWeapon: {fileID: 11400000, guid: 35d83b7a96b5f4b4ab496279ed45b014, type: 2}
+  canAttack: 1
 --- !u!1001 &7274040186199393881
 PrefabInstance:
   m_ObjectHideFlags: 0
