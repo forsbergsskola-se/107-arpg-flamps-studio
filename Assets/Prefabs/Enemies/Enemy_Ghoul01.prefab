@@ -2756,6 +2756,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d85ec955e92010249a1c8a58df54e6d7, type: 2}
+    - target: {fileID: 446369043461555840, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 225
+      objectReference: {fileID: 0}
     - target: {fileID: 8619139115050918437, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
       propertyPath: m_Radius
       value: 0.6
