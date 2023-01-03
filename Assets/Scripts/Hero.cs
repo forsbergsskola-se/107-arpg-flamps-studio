@@ -18,7 +18,7 @@ public class Hero : MonoBehaviour
 
     //public Health HP;
     public EquippedWeapon equippedWeapon;
-    public GameObject enemy;
+    //public GameObject enemy;
     public bool canAttack = true;
     private Animator _anim;
 
@@ -29,17 +29,26 @@ public class Hero : MonoBehaviour
 
     private void Update()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies){
+        
+
         //checks if player is close enough to allow attacking and attacks if yes.
         if (Input.GetMouseButtonDown(0)) //condition will have to be changed to match the player movement from stewart.
         {
             var distance = enemy.transform.position - transform.position;
             if (canAttack && distance.magnitude < 2.5f)
+            {
+                transform.LookAt(enemy.transform);
                 Swing();
+            }
+        }
         }
     }
 
     private void Swing() //plays the animation for attacking and activates attack cooldown.
     {
+        
         canAttack = false;
 
         _anim.SetTrigger(Attack1);
