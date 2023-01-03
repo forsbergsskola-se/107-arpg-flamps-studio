@@ -39,7 +39,7 @@ namespace Enemies
             StateHandlers = new Dictionary<ActionState, Action>
             {
                 { Idle, ActionStateIdle },
-                { Movement, ActionStateMovement },
+                { ActionState.Movement, ActionStateMovement },
                 { AttackBasic, ActionStateNotImplemented },
                 { AttackAbility, ActionStateNotImplemented },
             };
