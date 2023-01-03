@@ -3,7 +3,6 @@ using UnityEngine;
 public class HealthSystem
 {
     private int _healthCurrent;
-
     private int _healthMax;
 
     public HealthSystem(int healthMax, int healthPerLevel)
@@ -12,8 +11,7 @@ public class HealthSystem
         _healthCurrent = healthMax;
         //_healthPerLevel = healthPerLevel; active when using playerlevelsystem
     }
-
-
+    
     public int GetHealth()
     {
         return _healthCurrent;
@@ -77,5 +75,4 @@ public class HealthSystem
         Debug.Log("Level Up new max health");
         _healthMax += healthAmount;
     }
-
 }
