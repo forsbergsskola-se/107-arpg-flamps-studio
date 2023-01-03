@@ -7,7 +7,12 @@ public class Load : MonoBehaviour
     public GameObject Player;
     int _maxHealth = HealthSystem._healthCurrent;
     int _currentHealth = HealthSystem._healthCurrent;
+    MoveToClickPoint moveToClickPoint;
     
+    void Awake()
+    {
+        moveToClickPoint = GetComponent<MoveToClickPoint>();
+    }
     void Update()
     {
 
@@ -19,6 +24,8 @@ public class Load : MonoBehaviour
             float playerPositionY = PlayerPrefs.GetFloat("playerPositionY");
             float playerPositionZ = PlayerPrefs.GetFloat("playerPositionZ");
             Vector3 playerPosition = new Vector3(playerPositionX, playerPositionY, playerPositionZ);
+            moveToClickPoint.SetPlayerDestination(playerPosition);
+            moveToClickPoint.target = null;
             _maxHealth = PlayerPrefs.GetInt("maxHealth");
             _currentHealth = PlayerPrefs.GetInt("playerHealth");
             Debug.Log("playerPosition" + playerPosition + "PlayerHealth" + _currentHealth + "moneyCollected" +
@@ -27,4 +34,5 @@ public class Load : MonoBehaviour
             Player.transform.position = playerPosition;
         }
     }
+    
 }
