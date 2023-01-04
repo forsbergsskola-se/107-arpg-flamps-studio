@@ -19,7 +19,7 @@ public class Save : MonoBehaviour
       
 
 
-       void Start()
+       void Update()
            {
                if (Input.GetKeyDown(KeyCode.S))
                {
