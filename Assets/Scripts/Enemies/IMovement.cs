@@ -4,11 +4,12 @@ namespace Enemies
 {
     public interface IMovement
     {
-        public delegate void NavigationStateChange(bool newIsNavigating);
+        // public delegate void NavigationStateChange(bool newIsNavigating);
 
-        event NavigationStateChange OnNavigationStateChanged;
+        // event NavigationStateChange OnNavigationStateChanged;
+        public bool IsNavigating { get; }
 
         // Move toward a destination, return true once within distanceThreshold
-        void MoveNear(Vector3 destination, float distanceThreshold);
+        void UpdateDestination(Vector3 destination, float stoppingDistance);
     }
 }
