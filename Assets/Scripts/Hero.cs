@@ -46,17 +46,17 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void Swing() //plays the animation for attacking and activates attack cooldown.
+    private void Swing()
     {
-        
+        // plays the attack sound effect using the AudioSource component
+        GetComponent<AudioSource>().Play();
+
         canAttack = false;
-
         _anim.SetTrigger(Attack1);
-        //HP.health -= equippedweapon.damage;
-
 
         StartCoroutine(ResetAttackCooldown());
     }
+
 
     private IEnumerator ResetAttackCooldown()
     {
