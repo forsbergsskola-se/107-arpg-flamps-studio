@@ -5414,7 +5414,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896802862358975}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2011eba7be288274c9adb656f5dc8514, type: 3}
   m_Name: 
@@ -5422,6 +5422,8 @@ MonoBehaviour:
   player: {fileID: 1896802862358980}
   anim: {fileID: 1896802862358983}
   distanceToTarget: 2
+  threshold: 1
+  markerPrefab: {fileID: 4036396795461197716, guid: 9565510b1fbf5374ea81ab0a6ecb77b6, type: 3}
 --- !u!114 &1896802862358986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5541,6 +5543,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7274040186199393886, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
+      propertyPath: markerPrefab
+      value: 
+      objectReference: {fileID: 4036396795461197716, guid: 9565510b1fbf5374ea81ab0a6ecb77b6, type: 3}
     - target: {fileID: 7274040186199393887, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
       propertyPath: m_AngularSpeed
       value: 360
