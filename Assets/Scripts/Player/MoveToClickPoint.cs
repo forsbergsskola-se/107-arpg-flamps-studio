@@ -6,10 +6,12 @@ public class MoveToClickPoint : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent player;
     [SerializeField] private Animator anim;
-    [SerializeField] private float distanceToTarget = 2f;
+    [SerializeField] public static float distanceToTarget = 2f;
     
-    private Transform target;
+    public Transform target;
     private Camera mainCam;
+    public Vector3 playerDestination;
+    public bool destinationUpdated; // added flag
         
     void Awake() 
     {
@@ -32,6 +34,11 @@ public class MoveToClickPoint : MonoBehaviour
             
             player.SetDestination(target.position);
         }
+        else if (destinationUpdated) // added check
+        {
+            player.SetDestination(playerDestination);
+            destinationUpdated = false;
+        }
     }
 
     private void GetDestination()
@@ -50,7 +57,15 @@ public class MoveToClickPoint : MonoBehaviour
         else
         {
             target = null;
-            player.SetDestination(hit.point);
+            playerDestination = hit.point;
+            destinationUpdated = true; // set flag
         }
     }
+
+    public void SetPlayerDestination(Vector3 destination) // added method
+    {
+        playerDestination = destination;
+        destinationUpdated = true;
+    }
 }
+

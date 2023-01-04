@@ -5,9 +5,9 @@ namespace Player
 {
     public class LevelSystem : MonoBehaviour
     {
-        [SerializeField] private int level;
+        [SerializeField] public static int level;
         [SerializeField] private int xpPerLevel;
-        private int _curXp;
+        public static int _curXp;
     
         public UnityEvent<int, int> experienceUpdated;
         public UnityEvent<int> leveledUp;

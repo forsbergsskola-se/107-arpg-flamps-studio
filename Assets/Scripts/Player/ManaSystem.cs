@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ManaSystem
 {
-    private int _manaCurrent;
-    private int _manaMax;
+    public static int _manaCurrent;
+    public static int _manaMax;
 
     public ManaSystem(int manaMax)
     {
