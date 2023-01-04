@@ -13,7 +13,8 @@ public class PlayerMagicSystem : MonoBehaviour
     [SerializeField] private float timeBetweenCast = 2f;
 
     [SerializeField] private Transform castPoint;
-
+    private Animator anim;
+    
     private bool _castingMagic;
     private float _currentCastTimer;
     private float _currentManaRechageTimer;
@@ -21,6 +22,7 @@ public class PlayerMagicSystem : MonoBehaviour
     private void Awake()
     {
         currentMana = maxMana;
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -57,6 +59,7 @@ public class PlayerMagicSystem : MonoBehaviour
 
     private void CastSpell()
     {
+        anim.SetTrigger("CastSpell");
         Instantiate(spellToCast, castPoint.position, castPoint.rotation);
     }
 }
