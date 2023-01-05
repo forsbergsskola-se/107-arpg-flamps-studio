@@ -5421,7 +5421,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1896802862358980}
   anim: {fileID: 1896802862358983}
-  distanceToTarget: 2
+  target: {fileID: 0}
+  playerDestination: {x: 0, y: 0, z: 0}
+  destinationUpdated: 0
 --- !u!114 &1896802862358986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5438,7 +5440,7 @@ MonoBehaviour:
   axe: {fileID: 11400000, guid: 07ea670f45da5a24d93fdde83f298a69, type: 2}
   equippedWeapon: {fileID: 11400000, guid: 35d83b7a96b5f4b4ab496279ed45b014, type: 2}
   canAttack: 1
---- !u!114 &1896802862358987
+--- !u!114 &1896802862358995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5451,7 +5453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1896802862358975}
---- !u!114 &1896802862358988
+  levelSystem: {fileID: 1169558245}
+--- !u!114 &1896802862358996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5464,6 +5467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1896802862358975}
+  levelSystem: {fileID: 1169558245}
 --- !u!1001 &7274040186199393881
 PrefabInstance:
   m_ObjectHideFlags: 0
