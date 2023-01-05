@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Icycle : Spell
+public class Meteor : Spell
 {
     private void Awake()
     {
@@ -19,7 +21,7 @@ public class Icycle : Spell
         if (spellToCast.speed > 0) transform.Translate(Vector3.forward * (spellToCast.speed * Time.deltaTime));
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay (Collider other)
     {
         //Apply spell effects to whatever we hit.
         //Apply hit particle effects
@@ -31,6 +33,6 @@ public class Icycle : Spell
             enemyHealth.TakeDamage(spellToCast.damageAmount);
         }
     
-        Destroy(gameObject);
+        Destroy(gameObject, 5);
     }
 }
