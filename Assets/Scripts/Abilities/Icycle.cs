@@ -24,13 +24,13 @@ public class Icycle : Spell
         //Apply spell effects to whatever we hit.
         //Apply hit particle effects
         //Apply sound effects
-
+    
         if (other.gameObject.CompareTag("Enemy"))
         {
             var enemyHealth = other.GetComponent<HealthComponent>();
             enemyHealth.TakeDamage(spellToCast.damageAmount);
         }
-
+    
         Destroy(gameObject);
     }
 }
