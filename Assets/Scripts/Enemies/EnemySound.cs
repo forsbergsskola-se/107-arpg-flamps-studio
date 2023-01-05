@@ -1,26 +1,43 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-[RequireComponent(typeof(AudioSource))]
-public class EnemySound : MonoBehaviour
+namespace Enemies
 {
-    public List<AudioClip> swingSounds;
-    public List<AudioClip> alertSounds;
-    public List<AudioClip> deathSounds;
-    
-    private AudioSource _audioSource;
-
-    private void Start()
+    [RequireComponent(typeof(AudioSource))]
+    public class EnemySound : MonoBehaviour
     {
-        _audioSource = GetComponent<AudioSource>();
-    }
+        public List<AudioClip> attackSounds;
+        public List<AudioClip> alertSounds;
+        public List<AudioClip> deathSounds;
 
-    PlaySound(List<AudioClip> soundList)
-    {
-        _audioSource.
-    }
+        private AudioSource _audioSource;
 
+        private void Start()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
+
+        private void PlaySoundRandom(List<AudioClip> soundList)
+        {
+            var audioClip = soundList[Random.Range(0, soundList.Count)];
+            if (audioClip is null) return;
+
+            _audioSource.PlayOneShot(audioClip);
+        }
+
+        public void PlayAudioAttack()
+        {
+            PlaySoundRandom(attackSounds);
+        }
+
+        public void PlayAudioAlert()
+        {
+            PlaySoundRandom(alertSounds);
+        }
+
+        public void PlayAudioDeath()
+        {
+            PlaySoundRandom(deathSounds);
+        }
+    }
 }

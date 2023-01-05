@@ -2756,6 +2756,30 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d85ec955e92010249a1c8a58df54e6d7, type: 2}
+    - target: {fileID: 204685845965419954, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
+      propertyPath: alertSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 204685845965419954, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
+      propertyPath: deathSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 204685845965419954, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
+      propertyPath: attackSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 204685845965419954, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
+      propertyPath: alertSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 23d09cc4c601b1e48979b22c31aef8e8, type: 3}
+    - target: {fileID: 204685845965419954, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
+      propertyPath: deathSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 666a885a321dc9042adb3d157251d0d8, type: 3}
+    - target: {fileID: 204685845965419954, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
+      propertyPath: attackSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f258f7a86b74c441aa7c03230b6b2cc, type: 3}
     - target: {fileID: 446369043461555840, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
       propertyPath: m_AngularSpeed
       value: 225
