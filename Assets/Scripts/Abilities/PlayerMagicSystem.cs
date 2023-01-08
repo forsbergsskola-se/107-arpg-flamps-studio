@@ -28,7 +28,6 @@ public class PlayerMagicSystem : MonoBehaviour
     {
         currentMana = maxMana;
         _anim = GetComponent<Animator>();
-        
     }
 
     private void Update()

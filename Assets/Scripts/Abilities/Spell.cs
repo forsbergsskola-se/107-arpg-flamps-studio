@@ -32,6 +32,11 @@ public class Spell : MonoBehaviour
         //Apply spell effects to whatever we hit.
         //Apply hit particle effects
         //Apply sound effects
+        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
 
         if (other.gameObject.CompareTag("Enemy"))
         {

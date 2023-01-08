@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Icycle
   m_EditorClassIdentifier: 
   damageAmount: 50
-  manaCost: 1
+  manaCost: 5
   lifetime: 2
   speed: 30
   spellRadius: 0.5

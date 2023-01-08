@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Icycle : Spell
 {
+    
     private void Awake()
     {
         MyCollider = GetComponent<SphereCollider>();
@@ -24,6 +25,12 @@ public class Icycle : Spell
         //Apply spell effects to whatever we hit.
         //Apply hit particle effects
         //Apply sound effects
+        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            var enemyHealth = other.GetComponent<HealthComponent>();
+            enemyHealth.TakeDamage(spellToCast.damageAmount);
+        }
     
         if (other.gameObject.CompareTag("Enemy"))
         {
