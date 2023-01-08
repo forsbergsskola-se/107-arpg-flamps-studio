@@ -8,6 +8,8 @@ namespace Player
         [SerializeField] public static int level;
         [SerializeField] private int xpPerLevel;
         public static int _curXp;
+        public GameObject player;
+        public GameObject levelUpPrefab;
     
         public UnityEvent<int, int> experienceUpdated;
         public UnityEvent<int> leveledUp;
@@ -55,8 +57,9 @@ namespace Player
             {
                 CurrentLevel++;
                 CurrentXp -= XpPerLevel;
-                //healthSystem.IncreaseMaxHealth(healthPerLevel);
-                //manaSystem.IncreaseMaxMana(manaPerLevel);
+                GameObject levelUp = Instantiate(levelUpPrefab, player.transform.position, transform.rotation);
+                // Destroy the explosion effect after 2 seconds
+                Destroy(levelUp, 5f);
             }
         }
     }
