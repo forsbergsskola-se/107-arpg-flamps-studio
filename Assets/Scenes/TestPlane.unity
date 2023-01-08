@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5421,7 +5421,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1896802862358980}
   anim: {fileID: 1896802862358983}
-  distanceToTarget: 2
+  target: {fileID: 0}
+  playerDestination: {x: 0, y: 0, z: 0}
+  destinationUpdated: 0
 --- !u!114 &1896802862358986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5450,7 +5452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f254296e60e8d4e94466c71751e189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1896802862358975}
 --- !u!114 &1896802862358988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5471,6 +5472,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7274040186199393886, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
+      propertyPath: levelUpPrefab
+      value: 
+      objectReference: {fileID: 3483257492563833105, guid: 5d181d219430d5143b57c29ba8bbc644, type: 3}
     - target: {fileID: 7274040186199393887, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
       propertyPath: m_AngularSpeed
       value: 360
@@ -5495,6 +5500,14 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1954681135}
+    - target: {fileID: 7274040187232111804, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1896802862358975}
+    - target: {fileID: 7274040187232111804, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
+      propertyPath: levelUpPrefab
+      value: 
+      objectReference: {fileID: 3483257492563833105, guid: 5d181d219430d5143b57c29ba8bbc644, type: 3}
     - target: {fileID: 7274040187232111804, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
       propertyPath: experienceUpdated.m_PersistentCalls.m_Calls.Array.size
       value: 0

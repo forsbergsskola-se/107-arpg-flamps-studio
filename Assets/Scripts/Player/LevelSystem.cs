@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 namespace Player
 {
@@ -19,6 +20,7 @@ namespace Player
         public int manaPerLevel;
 
 
+        private GameObject levelUpEffect;
         
         public int CurrentXp
         {
@@ -50,16 +52,32 @@ namespace Player
                 LevelUp();
             }
         }
-
         private void LevelUp()
         {
             while (CurrentXp >= XpPerLevel)
             {
                 CurrentLevel++;
                 CurrentXp -= XpPerLevel;
-                GameObject levelUp = Instantiate(levelUpPrefab, player.transform.position, transform.rotation);
-                // Destroy the explosion effect after 2 seconds
-                Destroy(levelUp, 5f);
+                if (levelUpEffect == null)
+                {
+                    levelUpEffect = Instantiate(levelUpPrefab, player.transform.position, transform.rotation);
+                    StartCoroutine(DestroyLevelUpEffect(5f));
+                }
+            }
+        }
+
+        private IEnumerator DestroyLevelUpEffect(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            Destroy(levelUpEffect);
+            levelUpEffect = null;
+        }
+
+        void Update()
+        {
+            if (levelUpEffect != null)
+            {
+                levelUpEffect.transform.position = player.transform.position;
             }
         }
     }
