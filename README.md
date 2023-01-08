@@ -1,20 +1,27 @@
-# {game-title}
+# Forslayer
 
 {video}
 
-{description}
+The repository for the award winning (awards pending) Forslayer
 
-## Team Name
+## FLAMPS Studio
 
-{team members and roles}
-
-Feel free to link any existing Linked.in Profiles or Portfolio Websites.
+Alisa
+Felix (Product Owner)
+Lawrence
+Mohammad (Scrum Master)
+Philip
+Stewart (Project Lead)
+Daniel
 
 ## Design Documents
 
 {gdd}
 
-{tdd}
+Forslayer Technical Document
+https://docs.google.com/document/d/1G1FRt30GkujD9pizI5bsZ7yJgD05wlP7GjoBy02OS_c
+
+
 
 {art-bible}
 
