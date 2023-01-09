@@ -1,19 +1,13 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Player;
 using UnityEngine;
 
 public class Load : MonoBehaviour
 {
-    private int _currentMana = ManaSystem._manaCurrent;
-    private int _PlayerMana = ManaSystem._manaMax;
-    private int _playerLevel = LevelSystem.level;
-    private int _xp = LevelSystem._curXp;
     public GameObject Player;
-    int _maxHealth = HealthSystem._healthCurrent;
-    int _currentHealth = HealthSystem._healthCurrent;
     MoveToClickPoint moveToClickPoint;
-    
+    public LevelSystem levelSystem;
     void Awake()
     {
         moveToClickPoint = GetComponent<MoveToClickPoint>();
@@ -31,17 +25,18 @@ public class Load : MonoBehaviour
             Vector3 playerPosition = new Vector3(playerPositionX, playerPositionY, playerPositionZ);
             moveToClickPoint.SetPlayerDestination(playerPosition);
             moveToClickPoint.target = null;
-            _maxHealth = PlayerPrefs.GetInt("maxHealth");
-            _currentHealth = PlayerPrefs.GetInt("playerHealth");
-            _xp = PlayerPrefs.GetInt("currentXP");
-            _playerLevel = PlayerPrefs.GetInt("PlayerLevel");
-            _PlayerMana = PlayerPrefs.GetInt("PlayerMana");
-            _currentMana = PlayerPrefs.GetInt("currentMana");
-            Debug.Log("playerPosition" + playerPosition + "PlayerHealth" + _currentHealth + "moneyCollected" +
-                      _currentHealth);
+            HealthSystem._healthMax = PlayerPrefs.GetInt("MaxHealth");
+            HealthSystem._healthCurrent = PlayerPrefs.GetInt("playerHealth");
+            levelSystem.CurrentXp = PlayerPrefs.GetInt("currentXP");
+            levelSystem.CurrentLevel = PlayerPrefs.GetInt("playerLevel");
+            ManaSystem._manaMax = PlayerPrefs.GetInt("PlayerMana");
+            ManaSystem._manaCurrent = PlayerPrefs.GetInt("currentMana");
+            Debug.Log("playerPosition " + playerPosition + ", PlayerHealth " + HealthSystem._healthCurrent +
+                      "maxhealth " + HealthSystem._healthMax + "currentxp: " + levelSystem.CurrentXp + " Level: " +
+                      levelSystem);
 
             Player.transform.position = playerPosition;
         }
     }
     
-}*/
+}

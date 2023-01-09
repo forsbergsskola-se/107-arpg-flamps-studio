@@ -5,10 +5,10 @@ namespace Player
 {
     public class LevelSystem : MonoBehaviour
     {
-        [SerializeField] public static int level;
+        [SerializeField] public  int level;
         [SerializeField] private int xpPerLevel;
         public static int _curXp;
-    
+        public GameObject player;
         public UnityEvent<int, int> experienceUpdated;
         public UnityEvent<int> leveledUp;
         public HealthSystem healthSystem;
@@ -20,8 +20,8 @@ namespace Player
         
         public int CurrentXp
         {
-            get => _curXp; 
-            private set
+            get => _curXp;
+            set
             {
                 _curXp = Mathf.Clamp(value, 0, int.MaxValue);
                 experienceUpdated?.Invoke(_curXp, XpPerLevel);
@@ -31,7 +31,7 @@ namespace Player
         public int CurrentLevel
         {
             get => level;
-            private set
+            set
             {
                 level = Mathf.Clamp(value, 0, int.MaxValue);
                 leveledUp?.Invoke(level);
