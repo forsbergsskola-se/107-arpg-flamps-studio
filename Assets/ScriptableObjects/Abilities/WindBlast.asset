@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7c69750981a564dbf5ffdd3fa99508, type: 3}
   m_Name: WindBlast
   m_EditorClassIdentifier: 
-  damageAmount: 10
-  manaCost: 25
-  lifetime: 1
+  damageAmount: 5
+  manaCost: 20
+  lifetime: 0.5
   speed: 10
-  spellRadius: 5
+  spellRadius: 2

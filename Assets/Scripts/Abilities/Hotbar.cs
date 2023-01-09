@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +11,6 @@ public class Hotbar : MonoBehaviour
     [SerializeField] private float currentMana;
     [SerializeField] private float manaRechargeRate = 2;
     
-    [SerializeField] private Transform selfCastPoint;
     [SerializeField] private Transform castPoint;
     [SerializeField] private GameObject player;
 
@@ -27,7 +25,7 @@ public class Hotbar : MonoBehaviour
     [Header("Ability 1")]
     public Image abilityImage1;
     public float cooldown1 = 5;
-    private bool isCooldown = false;
+    private bool _isCooldown;
     public KeyCode ability1;
     [SerializeField] private Spell spellToCast;
     public AudioSource spell1Fx;
@@ -35,7 +33,7 @@ public class Hotbar : MonoBehaviour
     [Header("Ability 2")]
     public Image abilityImage2;
     public int manaCost2; 
-    private bool isCooldown2 = false;
+    private bool _isCooldown2;
     public float cooldown2 = 10;
     public KeyCode ability2;
     [SerializeField] private float shieldActiveTime;
@@ -46,7 +44,7 @@ public class Hotbar : MonoBehaviour
     [Header("Ability 3")]
     public Image abilityImage3;
     public float cooldown3 = 15;
-    private bool isCooldown3 = false;
+    private bool _isCooldown3;
     public KeyCode ability3;
     [SerializeField] private float instantMana;
     public AudioSource spell3Fx;
@@ -55,7 +53,7 @@ public class Hotbar : MonoBehaviour
     [Header("Ability 4")]
     public Image abilityImage4;
     public float cooldown4 = 15;
-    private bool isCooldown4 = false;
+    private bool _isCooldown4;
     public KeyCode ability4;
     [SerializeField] private Spell spellToCast4;
     public AudioSource spell4Fx;
@@ -64,7 +62,7 @@ public class Hotbar : MonoBehaviour
     [Header("Ability 5")]
     public Image abilityImage5;
     public float cooldown5 = 5;
-    private bool isCooldown5 = false;
+    private bool _isCooldown5;
     public KeyCode ability5;
     [SerializeField] private float manaCost5;
     public AudioSource spell5Fx;
@@ -73,7 +71,7 @@ public class Hotbar : MonoBehaviour
     public float dashDistance = 5f;
     public float dashSpeed = 1f;
     public float dashDelay = 1f;
-    private bool dashing = false;
+    private bool _dashing;
     
     // Start is called before the first frame update
     void Start()
@@ -124,37 +122,37 @@ public class Hotbar : MonoBehaviour
     
     void Ability1()
     {
-        if (Input.GetKey(ability1) && isCooldown == false && currentMana >= spellToCast.spellToCast.manaCost )
+        if (Input.GetKey(ability1) && _isCooldown == false && currentMana >= spellToCast.spellToCast.manaCost )
         {
-            isCooldown = true;
+            _isCooldown = true;
             abilityImage1.fillAmount = 1;
             CastSpell();
         }
 
-        if (isCooldown)
+        if (_isCooldown)
         {
             abilityImage1.fillAmount -= 1 / cooldown1 * Time.deltaTime;
 
             if (abilityImage1.fillAmount <= 0)
             {
                 abilityImage1.fillAmount = 0;
-                isCooldown = false;
+                _isCooldown = false;
             }
         }
     }
     
     void Ability2()
     {
-        if (Input.GetKey(ability2) && isCooldown2 == false && currentMana >= manaCost2)
+        if (Input.GetKey(ability2) && _isCooldown2 == false && currentMana >= manaCost2)
         {
-            isCooldown2 = true;
+            _isCooldown2 = true;
             abilityImage2.fillAmount = 1;
             spellToCast2.SetActive(true);
             // Reduce the player's mana by the cost of the spell
             currentMana -= manaCost2;
         }
         
-        if (isCooldown2)
+        if (_isCooldown2)
         {
             shieldActiveTime -= 1 * Time.deltaTime;
             if (shieldActiveTime<=0)
@@ -167,7 +165,7 @@ public class Hotbar : MonoBehaviour
             if (abilityImage2.fillAmount <= 0)
             {
                 abilityImage2.fillAmount = 0;
-                isCooldown2 = false;
+                _isCooldown2 = false;
                 shieldActiveTime = 5;
             }
         }
@@ -175,22 +173,22 @@ public class Hotbar : MonoBehaviour
     
     void Ability3()
     {
-        if (Input.GetKey(ability3) && isCooldown3 == false)
+        if (Input.GetKey(ability3) && _isCooldown3 == false)
         {
-            isCooldown3 = true;
+            _isCooldown3 = true;
             abilityImage3.fillAmount = 1;
             currentMana += instantMana;
             if (currentMana > maxMana) currentMana = maxMana;
         }
 
-        if (isCooldown3)
+        if (_isCooldown3)
         {
             abilityImage3.fillAmount -= 1 / cooldown3 * Time.deltaTime;
 
             if (abilityImage3.fillAmount <= 0)
             {
                 abilityImage3.fillAmount = 0;
-                isCooldown3 = false;
+                _isCooldown3 = false;
             }
         }
     }
@@ -198,45 +196,45 @@ public class Hotbar : MonoBehaviour
     void Ability4()
     {
        
-        if (Input.GetKey(ability4) && isCooldown4 == false && currentMana >= spellToCast4.spellToCast.manaCost)
+        if (Input.GetKey(ability4) && _isCooldown4 == false && currentMana >= spellToCast4.spellToCast.manaCost)
         {
-            isCooldown4 = true;
+            _isCooldown4 = true;
             abilityImage4.fillAmount = 1;
             CastSpell4();
         }
 
-        if (isCooldown4)
+        if (_isCooldown4)
         {
             abilityImage4.fillAmount -= 1 / cooldown4 * Time.deltaTime;
 
             if (abilityImage4.fillAmount <= 0)
             {
                 abilityImage4.fillAmount = 0;
-                isCooldown4 = false;
+                _isCooldown4 = false;
             }
         }
     }
 
     void Ability5()
     {
-        if (Input.GetKey(ability5) && isCooldown5 == false && !dashing && currentMana >= manaCost2)
+        if (Input.GetKey(ability5) && _isCooldown5 == false && !_dashing && currentMana >= manaCost2)
         {
             currentMana -= manaCost5;
-            isCooldown5 = true;
+            _isCooldown5 = true;
             abilityImage5.fillAmount = 1;
             
-            dashing = true;
+            _dashing = true;
             StartCoroutine(PerformDash());
         }
 
-        if (isCooldown5)
+        if (_isCooldown5)
         {
             abilityImage5.fillAmount -= 1 / cooldown5 * Time.deltaTime;
 
             if (abilityImage5.fillAmount <= 0)
             {
                 abilityImage5.fillAmount = 0;
-                isCooldown5 = false;
+                _isCooldown5 = false;
             }
         }
     }
@@ -279,7 +277,7 @@ public class Hotbar : MonoBehaviour
            player.transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
-        dashing = false;
+        _dashing = false;
         yield return new WaitForSeconds(dashDelay);
     }
 }
