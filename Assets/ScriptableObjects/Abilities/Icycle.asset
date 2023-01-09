@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7c69750981a564dbf5ffdd3fa99508, type: 3}
   m_Name: Icycle
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  damageAmount: 50
   manaCost: 5
   lifetime: 2
   speed: 30

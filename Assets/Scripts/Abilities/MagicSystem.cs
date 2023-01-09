@@ -1,11 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
-//attach to player
-public class PlayerMagicSystem : MonoBehaviour
+public class MagicSystem : MonoBehaviour
 {
-    //spellPrefabs here
+     //spellPrefabs here
     [SerializeField] private Spell spellToCast;
 
     [SerializeField] private int maxMana = 100;
@@ -28,6 +29,7 @@ public class PlayerMagicSystem : MonoBehaviour
     {
         currentMana = maxMana;
         _anim = GetComponent<Animator>();
+        
     }
 
     private void Update()

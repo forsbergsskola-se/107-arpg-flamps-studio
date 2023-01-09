@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7c69750981a564dbf5ffdd3fa99508, type: 3}
-  m_Name: WindBlast
+  m_Name: meteor
   m_EditorClassIdentifier: 
-  damageAmount: 5
-  manaCost: 20
-  lifetime: 0.5
-  speed: 10
-  spellRadius: 2
+  damageAmount: 10
+  manaCost: 5
+  lifetime: 2
+  speed: 15
+  spellRadius: 0.5
