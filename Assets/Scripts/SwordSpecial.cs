@@ -9,7 +9,6 @@ public class SwordSpecial : MonoBehaviour
     public GameObject player;
     public EquippedWeapon equippedWeapon;
     public GameObject swordWeapon;
-    public GameObject weaponHolder;
     private Animator _anim;
 
     private void Start()
@@ -19,7 +18,7 @@ public class SwordSpecial : MonoBehaviour
 
     private void Update() //lets you use special weapon ability by pressing 1, as long as its child of weaponHolder.
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && swordWeapon.transform.IsChildOf(weaponHolder.transform))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
             _anim.SetTrigger(Special);
     }
 
