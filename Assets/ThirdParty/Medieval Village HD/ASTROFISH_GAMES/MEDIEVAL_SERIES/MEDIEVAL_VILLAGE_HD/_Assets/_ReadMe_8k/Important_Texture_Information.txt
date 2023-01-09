@@ -1,0 +1,18 @@
+IMPORTANT TEXTURE INFORMATION
+*****************************
+Textures in this set have various maximum resolution.
+Please see the maximum texture resolution displayed as a suffix of each texture map.
+Example:
+Medieval_TYPE_Resolution
+
+Materials which use 8K texture atlasses are:
+********************************************
+Medieval_Chimneys_8k
+Medieval_PlatformsFoundationsPorch_8k
+
+MOST are 4096x4096, however some are lower resolution and a couple as stated above are higher.
+
+If you you like 16bit Double resolution of these texture maps (up to 8k) 
+the please get in touch via Facebook: http://bit.ly/31TO5I1
+
+Thanks!
