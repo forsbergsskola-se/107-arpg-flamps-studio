@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class HealthSystem
 {
-    private int _healthCurrent;
-    private int _healthMax;
+    public static int _healthCurrent;
+    public static int _healthMax;
 
     public HealthSystem(int healthMax, int healthPerLevel)
     {
