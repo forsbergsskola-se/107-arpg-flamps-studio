@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraRig : MonoBehaviour
@@ -15,11 +13,12 @@ public class CameraRig : MonoBehaviour
     }
     void FixedUpdate ()
     {
-        if(target == null)
+        if(rigTransform == null || target == null)
         {
             return;
         }
 
         rigTransform.position = Vector3.Lerp(rigTransform.position, target.transform.position, Time.deltaTime * moveSpeed);
     }
+
 }
