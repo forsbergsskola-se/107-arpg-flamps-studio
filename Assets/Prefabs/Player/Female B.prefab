@@ -555,7 +555,6 @@ GameObject:
   - component: {fileID: 7274040187232111805}
   - component: {fileID: 7274040187232111784}
   - component: {fileID: 7274040187232111804}
-  - component: {fileID: 7274040187232111794}
   m_Layer: 0
   m_Name: Female B
   m_TagString: Player
@@ -660,7 +659,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7274040186199393887}
   anim: {fileID: 7323021598178563892}
-  distanceToTarget: 2
+  target: {fileID: 0}
+  playerDestination: {x: 0, y: 0, z: 0}
+  destinationUpdated: 0
 --- !u!195 &7274040186199393887
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -823,6 +824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   xpPerLevel: 100
+  player: {fileID: 0}
   experienceUpdated:
     m_PersistentCalls:
       m_Calls:
@@ -843,27 +845,6 @@ MonoBehaviour:
       m_Calls: []
   healthPerLevel: 10
   manaPerLevel: 10
---- !u!114 &7274040187232111794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274483430250063846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3277ea4a3d0bce46b442ff8f595617b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageReceived: 10
-  healthRestored: 10
-  amount2Regen: 1
-  manaCost: 10
-  manaRefill: 10
-  mana2Regen: 1
-  healthbar: {fileID: 0}
-  manaBar: {fileID: 0}
-  _levelSystem: {fileID: 7274040187232111804}
 --- !u!1 &7274486784945722374
 GameObject:
   m_ObjectHideFlags: 0
