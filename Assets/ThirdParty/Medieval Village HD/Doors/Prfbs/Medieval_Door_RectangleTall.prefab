@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 7057318233944382551}
   - component: {fileID: 4022886688515002278}
   - component: {fileID: 5048777210787953046}
+  - component: {fileID: 7538785224827900021}
   m_Layer: 0
   m_Name: Medieval_Door_RectangleTall
   m_TagString: Untagged
@@ -371,3 +372,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionDistance: 2
+--- !u!65 &7538785224827900021
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406922867772342840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
