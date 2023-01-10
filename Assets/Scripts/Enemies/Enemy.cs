@@ -58,7 +58,7 @@ namespace Enemies
             {
                 // Debug.Log("[ENEMY] Setting Target Reference");
                 _hasAttackTarget = value is not null;
-                // Debug.Log($"[ENEMY] hasAttackTarget: {_hasAttackTarget}");
+                 //Debug.Log($"[ENEMY] hasAttackTarget: {_hasAttackTarget}");
                 if (_hasAttackTarget && playAudioOnAlert) _sound.PlayAudioAlert();
                 _curAttackTargetRef = value;
             }
