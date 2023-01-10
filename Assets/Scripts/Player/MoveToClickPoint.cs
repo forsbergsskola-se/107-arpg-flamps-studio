@@ -49,7 +49,7 @@ public class MoveToClickPoint : MonoBehaviour
         if (!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out var hit)) 
             return;
             
-        if(hit.collider.CompareTag("GoTo")) //This means we hit a follow Target
+        if(hit.collider.CompareTag("Enemy")) //This means we hit a follow Target
         {
             Debug.Log("Target assigned : "+hit.transform.gameObject.name); 
             target = hit.transform;
