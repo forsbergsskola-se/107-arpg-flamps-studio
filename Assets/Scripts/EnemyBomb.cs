@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyBomb : MonoBehaviour
     {
-        public GameObject player;
+        /*public GameObject player;
         public GameObject explosionPrefab;
 
 
@@ -83,5 +83,5 @@ public class EnemyBomb : MonoBehaviour
                 // Destroy the enemy
                 Destroy(gameObject);
             }
-        }
+        }*/
     }

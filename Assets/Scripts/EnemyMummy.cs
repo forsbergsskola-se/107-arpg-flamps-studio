@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyMummy : MonoBehaviour
     {
-        public GameObject player;
+        /*public GameObject player;
 
 
         [SerializeField] private NavMeshAgent agent;
@@ -77,5 +77,5 @@ public class EnemyMummy : MonoBehaviour
                 // Destroy the enemy
                 Destroy(gameObject);
             }
-        }
+        }*/
     }
