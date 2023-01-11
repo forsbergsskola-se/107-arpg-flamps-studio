@@ -37,7 +37,7 @@ namespace Enemies
         // Private State
         [CanBeNull] private GameObject _curAttackTargetRef; // backing field
         private bool _hasAttackTarget; // null checking is "expensive", use bool instead
-        private float _healthCur;
+        public float healthCur;
 
 
         // Movement
@@ -68,7 +68,7 @@ namespace Enemies
         private void Awake()
         {
             // NPC Values
-            _healthCur = healthMax;
+            healthCur = healthMax;
 
             // Components
             _anim = GetComponent<Animator>();
@@ -116,9 +116,9 @@ namespace Enemies
         {
             // Hurt shouldn't be able to heal,
             // 0 or more damage only
-            _healthCur -= Mathf.Max(healthPoints, 0);
+            healthCur -= Mathf.Max(healthPoints, 0);
 
-            if (_healthCur <= 0)
+            if (healthCur <= 0)
                 Die();
             else
                 _anim.SetTrigger(AnimTrigGetHit);
