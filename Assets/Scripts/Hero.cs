@@ -55,7 +55,7 @@ public class Hero : MonoBehaviour
         canAttack = false;
 
         _anim.SetTrigger(Attack1);
-        enemyTarget.healthCur -= equippedWeapon.damage;
+        enemyTarget.Hurt(equippedWeapon.damage);
 
         StartCoroutine(ResetAttackCooldown());
     }
