@@ -4,7 +4,7 @@ public class WeaponAttach : MonoBehaviour
 {
     public GameObject Player;
     public Sword sword;
-    //public Axe axe;
+    public GameObject pickableSword;
     public GameObject swordWeapon; //the sword prefab (your choice)
     //public GameObject axeWeapon; // the axe prefab (your choice)
     public GameObject weaponHolder; //empty object attached to player arm
@@ -16,10 +16,11 @@ public class WeaponAttach : MonoBehaviour
 
     private void Update()
     {
-        var distance = Player.transform.position - transform.position;
+        var distance = Player.transform.position - pickableSword.transform.position;
         if (Input.GetKeyDown(KeyCode.O) && distance.magnitude < 2.5f)
         {
-            swordWeapon.transform.SetParent(weaponHolder.transform); //attaches weapon of choice to weaponHolder.
+            swordWeapon.SetActive(true);
+            pickableSword.SetActive(false);
         }
         //(using axe for testing purposes only)
 
