@@ -1,4 +1,5 @@
 using System.Collections;
+using Enemies;
 using UnityEngine;
 
 public class Hero : MonoBehaviour
@@ -18,6 +19,7 @@ public class Hero : MonoBehaviour
 
     //public Health HP;
     public EquippedWeapon equippedWeapon;
+
     //public GameObject enemy;
     public bool canAttack = true;
     private Animator _anim;
@@ -29,31 +31,31 @@ public class Hero : MonoBehaviour
 
     private void Update()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies){
-        
-
-        //checks if player is close enough to allow attacking and attacks if yes.
-        if (Input.GetMouseButtonDown(0)) //condition will have to be changed to match the player movement from stewart.
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemyGameObject in enemies)
         {
-            var distance = enemy.transform.position - transform.position;
-            if (canAttack && distance.magnitude < 2.5f)
+            var enemy = enemyGameObject.GetComponent<Enemy>();
+
+            //checks if player is close enough to allow attacking and attacks if yes.
+            if (Input.GetMouseButtonDown(
+                    0)) //condition will have to be changed to match the player movement from stewart.
             {
-                transform.LookAt(enemy.transform);
-                Swing();
+                var distance = enemy.transform.position - transform.position;
+                if (canAttack && distance.magnitude < 2.5f)
+                {
+                    transform.LookAt(enemy.transform);
+                    Swing(enemy);
+                }
             }
-        }
         }
     }
 
-    private void Swing() //plays the animation for attacking and activates attack cooldown.
+    private void Swing(Enemy enemyTarget) //plays the animation for attacking and activates attack cooldown.
     {
-        
         canAttack = false;
 
         _anim.SetTrigger(Attack1);
-        //HP.health -= equippedweapon.damage;
-
+        enemyTarget.healthCur -= equippedWeapon.damage;
 
         StartCoroutine(ResetAttackCooldown());
     }
