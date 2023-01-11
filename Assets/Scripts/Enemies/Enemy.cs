@@ -39,7 +39,6 @@ namespace Enemies
         private bool _hasAttackTarget; // null checking is "expensive", use bool instead
         private float _healthCur;
 
-
         // Movement
         private IMovement _movement;
         private float _nextAttackTime; // time when next attack will be performed
@@ -112,7 +111,7 @@ namespace Enemies
         }
 
         // Removes health, plays animation and calls OnPostHurt if the unit didn't die
-        private void Hurt(float healthPoints)
+        public void Hurt(float healthPoints)
         {
             // Hurt shouldn't be able to heal,
             // 0 or more damage only

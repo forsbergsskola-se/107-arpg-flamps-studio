@@ -2704,6 +2704,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Ghoul01
       objectReference: {fileID: 0}
+    - target: {fileID: 1588515496468854, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4329093712553798, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2783,6 +2787,10 @@ PrefabInstance:
     - target: {fileID: 446369043461555840, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
       propertyPath: m_AngularSpeed
       value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196421473190621785, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
+      propertyPath: attackDistanceStart
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8619139115050918437, guid: 4f55081a0bdb8ee469d0b61024bc3db7, type: 3}
       propertyPath: m_Radius
