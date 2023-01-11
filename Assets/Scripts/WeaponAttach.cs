@@ -17,8 +17,10 @@ public class WeaponAttach : MonoBehaviour
     private void Update()
     {
         var distance = Player.transform.position - transform.position;
-        if (Input.GetKeyDown(KeyCode.O) && distance.magnitude < 2.5f) 
+        if (Input.GetKeyDown(KeyCode.O) && distance.magnitude < 2.5f)
+        {
             swordWeapon.transform.SetParent(weaponHolder.transform); //attaches weapon of choice to weaponHolder.
+        }
         //(using axe for testing purposes only)
 
         //code below changes equipped weapon scriptable object to match weapon type.
