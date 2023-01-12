@@ -9,7 +9,7 @@ public class PlayerBars_HP_XP : MonoBehaviour
     public TextMesh HPTextReference;
     public RectTransform HPPanelReference;
 
-    public int healthMax;
+    public int healthMax = 100;
     private int _healthPercentage;
     private float _healthPercentageNorm;
 
@@ -46,9 +46,12 @@ public class PlayerBars_HP_XP : MonoBehaviour
         if (XPPanelReference is { })
             throw new NullReferenceException("XP Panel Reference is required");
 
-
+        
         hpPanelMaxWidth = HPPanelReference.rect.width;
         xpPanelMaxWidth = XPPanelReference.rect.width;
+        
+        // has to be set after other things ahve been initialized
+        HealthCur = healthMax;
     }
 
     // Update is called once per frame
