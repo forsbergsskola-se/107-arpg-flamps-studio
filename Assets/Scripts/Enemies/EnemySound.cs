@@ -12,22 +12,28 @@ namespace Enemies
 
         private AudioSource _audioSource;
 
+        private float _nextAttackSoundTime;
+        
         private void Start()
         {
             _audioSource = GetComponent<AudioSource>();
         }
 
-        private void PlaySoundRandom(List<AudioClip> soundList)
+        
+        // returns audio play time
+        private float PlaySoundRandom(List<AudioClip> soundList)
         {
             var audioClip = soundList[Random.Range(0, soundList.Count)];
-            if (audioClip is null) return;
+            if (audioClip is null) return 0;
 
             _audioSource.PlayOneShot(audioClip);
+            return audioClip.length;
         }
 
         public void PlayAudioAttack()
         {
-            PlaySoundRandom(attackSounds);
+            if (Time.time > _nextAttackSoundTime)
+                _nextAttackSoundTime = Time.time + (PlaySoundRandom(attackSounds) * 2);
         }
 
         public void PlayAudioAlert()
