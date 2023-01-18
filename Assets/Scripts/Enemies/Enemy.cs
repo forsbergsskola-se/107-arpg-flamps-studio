@@ -38,6 +38,7 @@ namespace Enemies
         [CanBeNull] private GameObject _curAttackTargetRef; // backing field
         private bool _hasAttackTarget; // null checking is "expensive", use bool instead
         private float _healthCur;
+        private bool _isDead = false;
 
         // Movement
         private IMovement _movement;
@@ -78,6 +79,8 @@ namespace Enemies
 
         private void Update()
         {
+            if (_isDead) return;
+            
             _anim.SetBool(AnimBoolIsRunning,
                 _isNavigating()); // set if changed; unsure of the overhead of this is worth it
 
@@ -111,11 +114,12 @@ namespace Enemies
         }
 
         // Removes health, plays animation and calls OnPostHurt if the unit didn't die
-        public void Hurt(float healthPoints)
+        public void Hurt(float subtractHealthPoints)
         {
+            if (_isDead) return;
             // Hurt shouldn't be able to heal,
             // 0 or more damage only
-            _healthCur -= Mathf.Max(healthPoints, 0);
+            _healthCur -= Mathf.Max(subtractHealthPoints, 0);
 
             if (_healthCur <= 0)
                 Die();
@@ -127,6 +131,7 @@ namespace Enemies
         {
             _anim.SetTrigger(AnimTrigDie);
             if (playAudioOnDeath) _sound.PlayAudioDeath();
+            _isDead = true;
         }
 
         // Note: doesn't account for size, collision, bounds or offset from transform
@@ -162,10 +167,9 @@ namespace Enemies
         {
             if (TargetWithinAttackHitRange())
                 Debug.Log($"Hit! on {attackTarget}");
-            // TODO: Run damage logic, if we had an interface I could've implemented that :)
-            // if (CurAttackTargetRef is Player player) { player.Hurt(damage) }
-            else
-                Debug.Log($"Missed! on {attackTarget}");
+                // attackTarget.GetComponent(<PlayerTestEngine>).               
+            // else
+                // Debug.Log($"Missed! on {attackTarget}");
         }
 
         private IEnumerator PerformBasicAttack(GameObject attackTarget, float attackApexDelay)
