@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Enemies
 {
@@ -13,7 +14,8 @@ namespace Enemies
         private AudioSource _audioSource;
 
         private float _nextAttackSoundTime;
-        
+        public float attackSoundQuietTimeMultiplier = 5;
+
         private void Start()
         {
             _audioSource = GetComponent<AudioSource>();
@@ -33,7 +35,7 @@ namespace Enemies
         public void PlayAudioAttack()
         {
             if (Time.time > _nextAttackSoundTime)
-                _nextAttackSoundTime = Time.time + (PlaySoundRandom(attackSounds) * 2);
+                _nextAttackSoundTime = Time.time + (PlaySoundRandom(attackSounds) * attackSoundQuietTimeMultiplier);
         }
 
         public void PlayAudioAlert()

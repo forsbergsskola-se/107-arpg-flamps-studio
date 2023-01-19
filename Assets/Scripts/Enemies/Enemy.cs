@@ -1,5 +1,6 @@
 using System.Collections;
 using JetBrains.Annotations;
+using Player;
 using UnityEngine;
 
 namespace Enemies
@@ -29,6 +30,8 @@ namespace Enemies
         [Range(0.01f, 2)] [Tooltip("Delay to execute hit logic from animation start")]
         public float attackDelayApex = 0.1f;
 
+        public int xpGrantedOnKill = 25;
+        
         public bool playAudioOnAlert = true;
         public bool playAudioOnAttack = true;
         public bool playAudioOnDeath = true;
@@ -48,6 +51,11 @@ namespace Enemies
 
         // Sound
         private EnemySound _sound;
+        private Collider _collider;
+
+        private static PlayerHPandXP _playerBarsRef;
+        private static PlayerHPandXP GetPlayerHPandXPRef() => _playerBarsRef ??= FindObjectOfType<PlayerHPandXP>();
+
 
         // Public State
         [CanBeNull]
@@ -72,6 +80,7 @@ namespace Enemies
 
             // Components
             _anim = GetComponent<Animator>();
+            _collider = GetComponent<Collider>();
             _rigBod = GetComponent<Rigidbody>();
             _movement = GetComponent<IMovement>();
             _sound = GetComponent<EnemySound>();
@@ -94,7 +103,7 @@ namespace Enemies
             if (!_isNavigating() && TargetWithinAttackStartRange() && !basicAttackOnCooldown)
             {
                 Debug.Log("Target is in range, we're not on a path");
-                _nextAttackTime = Time.time + attackDelayBetween;
+                _nextAttackTime = Time.time + attackDelayApex + attackDelayBetween;
                 StartCoroutine(PerformBasicAttack(CurAttackTargetRef, attackDelayApex));
             }
             else if (!TargetWithinAttackStartRange()) // no range, move closer
@@ -130,8 +139,18 @@ namespace Enemies
         private void Die()
         {
             _anim.SetTrigger(AnimTrigDie);
+            
             if (playAudioOnDeath) _sound.PlayAudioDeath();
+
+            Debug.Log($"Died giving {xpGrantedOnKill} XP to {GetPlayerHPandXPRef()}");
+            GetPlayerHPandXPRef().XPCur += xpGrantedOnKill;
+            
+            
             _isDead = true;
+            
+            _curAttackTargetRef = null;
+            _collider.enabled = false;
+            
         }
 
         // Note: doesn't account for size, collision, bounds or offset from transform
@@ -159,21 +178,37 @@ namespace Enemies
             Debug.Assert(_hasAttackTarget); // make a stink if we don't have a target
             // Debug.Log("[ENEMY] OnAttackBegin() called");
             _anim.SetTrigger(AnimTrigAttack);
-
             if (playAudioOnAttack) _sound.PlayAudioAttack();
         }
 
         private void OnAttackApex(GameObject attackTarget)
         {
+
             if (TargetWithinAttackHitRange())
+            {
                 Debug.Log($"Hit! on {attackTarget}");
-                // attackTarget.GetComponent(<PlayerTestEngine>).               
+                
+                // should be set and cached on target acquisition but w/e
+                PlayerHPandXP playerHPAndXP = attackTarget.GetComponent<PlayerHPandXP>();
+
+                if (playerHPAndXP is null)
+                {
+                    Debug.LogWarning( $"Apex on {attackTarget}, target {attackTarget} has no {nameof(PlayerHPandXP)} script!");
+                    return;
+                }
+                
+                playerHPAndXP.HealthCur -= (int)attackDamage;
+            }
+
             // else
-                // Debug.Log($"Missed! on {attackTarget}");
+            // Debug.Log($"Missed! on {attackTarget}");
         }
 
         private IEnumerator PerformBasicAttack(GameObject attackTarget, float attackApexDelay)
         {
+            if (!(_nextAttackTime > Time.time)) yield break;
+            if (_isDead) yield break;
+            
             OnAttackBegin(attackTarget);
             yield return new WaitForSeconds(attackApexDelay);
             OnAttackApex(attackTarget);
