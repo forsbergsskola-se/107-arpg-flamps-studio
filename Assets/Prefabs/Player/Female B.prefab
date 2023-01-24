@@ -555,6 +555,8 @@ GameObject:
   - component: {fileID: 7274040187232111805}
   - component: {fileID: 7274040187232111784}
   - component: {fileID: 7274040187232111804}
+  - component: {fileID: 8838560743871423415}
+  - component: {fileID: 5721215841297467053}
   m_Layer: 0
   m_Name: Female B
   m_TagString: Player
@@ -843,8 +845,38 @@ MonoBehaviour:
   leveledUp:
     m_PersistentCalls:
       m_Calls: []
+  levelUpEffect: {fileID: 0}
   healthPerLevel: 10
   manaPerLevel: 10
+--- !u!114 &8838560743871423415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274483430250063846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1432608c09a4274a372509293070d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPText: {fileID: 0}
+  HPPanel: {fileID: 0}
+  XPPanel: {fileID: 0}
+  healthMax: 100
+--- !u!114 &5721215841297467053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274483430250063846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fb871064af34bf893a7140f8b82946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractorRadius: 10
 --- !u!1 &7274486784945722374
 GameObject:
   m_ObjectHideFlags: 0
