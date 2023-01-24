@@ -10,9 +10,7 @@ public class InventorySystem : MonoBehaviour
     {
         // Initialize the inventory with empty values
         inventory.Add("item01", 0);
-        Debug.Log("item01");
         inventory.Add("item02", 0);
-        Debug.Log("item02");
         inventory.Add("item03", 0);
         inventory.Add("item04", 0);
         inventory.Add("item05", 0);
@@ -33,22 +31,25 @@ public class InventorySystem : MonoBehaviour
         }
     }
     
-    public void RemoveItem(string itemName, int amount)
+    public void RemoveItem(List<string> itemNames, int amount)
     {
-        if (inventory.ContainsKey(itemName))
+        foreach (string itemName in itemNames)
         {
-            int currentCount = inventory[itemName];
-            if (currentCount <= 0) 
+            if (inventory.ContainsKey(itemName))
             {
-                return;
+                int currentCount = inventory[itemName];
+                if (currentCount <= 0) 
+                {
+                    return;
+                }
+                inventory[itemName] -= amount;
+                Debug.Log(itemName + " removed! " + currentCount + " -> " + inventory[itemName]);
+                inventoryUI.UpdateInventoryUI();
             }
-            inventory[itemName] -= amount;
-            Debug.Log(itemName + " removed! " + currentCount + " -> " + inventory[itemName]);
-            inventoryUI.UpdateInventoryUI();
-        }
-        else
-        {
-            Debug.Log("Item not found in inventory: " + itemName);
+            else
+            {
+                Debug.Log("Item not found in inventory: " + itemName);
+            }
         }
     }
 

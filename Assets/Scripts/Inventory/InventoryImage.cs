@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class InventoryImage : MonoBehaviour, IPointerDownHandler
 {
     public GameObject player;
-    public GameObject item01Prefab;
+    public List<string> itemName; // new variable to store the name of the linked item
     
     private PlayerTestEngine playerTestEngine;
     private HealthSystem _healthSystem;
@@ -30,7 +30,7 @@ public class InventoryImage : MonoBehaviour, IPointerDownHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             Debug.Log("Left click");
-            inventorySystem.RemoveItem("item01", 1);
+            inventorySystem.RemoveItem(itemName, 1);
             if (playerTestEngine != null)
             {
                 HealthSystem healthSystem = playerTestEngine.GetHealthSystem();
@@ -43,13 +43,8 @@ public class InventoryImage : MonoBehaviour, IPointerDownHandler
         else if (eventData.button == PointerEventData.InputButton.Middle)
         {
             Debug.Log("Middle click");
-            inventorySystem.RemoveItem("item01", 1);
-            
-            //GameObject player = GameObject.Find("Player");
-            //Vector3 playerPosition = player.transform.position;
-            //Debug.Log("item01Prefab: " + item01Prefab);
-            //Instantiate(item01Prefab, playerPosition, Quaternion.identity);
-
+            List<string> items = new List<string>{"item01", "item02", "item03"};
+            inventorySystem.RemoveItem(items, 1);
         }
 
         //Right Mouse Click
