@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeaponAttach : MonoBehaviour
 {
-    public GameObject Player;
+    /*public GameObject Player;
     public Sword sword;
     public GameObject pickableSword;
     public GameObject swordWeapon; //the sword prefab (your choice)
@@ -30,10 +30,10 @@ public class WeaponAttach : MonoBehaviour
             currentWeapon.damage = sword.damage;
             currentWeapon.attackCooldown = sword.attackCooldown;
         }
-        /*else if (axeWeapon.transform.IsChildOf(weaponHolder.transform))
+        else if (axeWeapon.transform.IsChildOf(weaponHolder.transform))
         {
             currentWeapon.damage = axe.damage;
             currentWeapon.attackCooldown = axe.attackCooldown;
-        }*/
-    }
+        }
+    }*/
 }

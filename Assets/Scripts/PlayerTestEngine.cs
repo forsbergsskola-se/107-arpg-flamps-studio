@@ -17,7 +17,7 @@ public class PlayerTestEngine : MonoBehaviour
     {
         //Test HealthSystem
         _healthSystem = new HealthSystem(100, 10);
-        healthbar.SetHealthMax(_healthSystem.GetHealth());
+        //healthbar.SetHealthMax(_healthSystem.GetHealth());
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class PlayerTestEngine : MonoBehaviour
             _regenTimer = 0;
         }
 
-        healthbar.SetHealthCurrent(_healthSystem.GetHealth());
+        //healthbar.SetHealthCurrent(_healthSystem.GetHealth());
     }
     
     public HealthSystem GetHealthSystem()
