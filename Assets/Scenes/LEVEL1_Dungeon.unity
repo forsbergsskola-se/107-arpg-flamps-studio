@@ -41260,11 +41260,11 @@ PrefabInstance:
     - target: {fileID: 6038959290312617746, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
       propertyPath: HPPanel
       value: 
-      objectReference: {fileID: 1496873849}
+      objectReference: {fileID: 1496873848}
     - target: {fileID: 6038959290312617746, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
       propertyPath: XPPanel
       value: 
-      objectReference: {fileID: 1496873848}
+      objectReference: {fileID: 1496873849}
     - target: {fileID: 6038959290312617746, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
       propertyPath: youDiedImage
       value: 
