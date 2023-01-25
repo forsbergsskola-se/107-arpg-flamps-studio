@@ -1,13 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Player;
 
 public class InventorySystem : MonoBehaviour
 {
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
-    public InventoryUI inventoryUI; 
+    public InventoryUI inventoryUI;
 
+    private PlayerHPandXP _playerBars;
+    
     private void Start()
     {
+        _playerBars = GetComponent<PlayerHPandXP>();
+        
         // Initialize the inventory with empty values
         inventory.Add("item01", 0);
         inventory.Add("item02", 0);
@@ -44,6 +49,12 @@ public class InventorySystem : MonoBehaviour
                 }
                 inventory[itemName] -= amount;
                 Debug.Log(itemName + " removed! " + currentCount + " -> " + inventory[itemName]);
+
+                if (itemName == "item01") // health consumable
+                {
+                    _playerBars.HealthCur += 25;
+                }
+                
                 inventoryUI.UpdateInventoryUI();
             }
             else
