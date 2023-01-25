@@ -9,7 +9,6 @@ public class InventoryImage : MonoBehaviour, IPointerDownHandler
     public List<string> itemName; // new variable to store the name of the linked item
     
     private PlayerTestEngine playerTestEngine;
-    private HealthSystem _healthSystem;
     private InventorySystem inventorySystem;
 
     // Start is called before the first frame update
@@ -30,19 +29,14 @@ public class InventoryImage : MonoBehaviour, IPointerDownHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             Debug.Log("Left click");
+            List<string> items = new List<string>{"item01", "item02", "item03"};
             inventorySystem.RemoveItem(itemName, 1);
-            if (playerTestEngine != null)
-            {
-                HealthSystem healthSystem = playerTestEngine.GetHealthSystem();
-                healthSystem.Damage(-20);
-                playerTestEngine.healthbar.SetHealthCurrent(healthSystem.GetHealth());
-            }
         }
         
         //Middle Mouse Click
         else if (eventData.button == PointerEventData.InputButton.Middle)
         {
-            Debug.Log("Middle click");
+            Debug.Log("Middle click removes item from inventory");
             List<string> items = new List<string>{"item01", "item02", "item03"};
             inventorySystem.RemoveItem(items, 1);
         }
@@ -50,10 +44,9 @@ public class InventoryImage : MonoBehaviour, IPointerDownHandler
         //Right Mouse Click
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            Debug.Log("Right click");
+            Debug.Log("Right click Does Nothing");
 
         }
-
     }
 }
 
