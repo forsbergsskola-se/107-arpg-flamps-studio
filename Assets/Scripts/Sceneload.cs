@@ -7,16 +7,17 @@ using UnityEngine.SceneManagement;
 public class Sceneload : MonoBehaviour
 {
     public GameObject Player;
-    public LevelSystem levelSystem;
+    //public LevelSystem levelSystem;
+    public Scene scene2Load;
     MoveToClickPoint moveToClickPoint;
     
     void Awake()
     {
         moveToClickPoint = GetComponent<MoveToClickPoint>();
     }
-    public void LoadScene(string sceneName)
+    public void LoadScene(string scene2Load)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(scene2Load);
     }
     
     public void QuitGame() {
@@ -27,7 +28,7 @@ public class Sceneload : MonoBehaviour
     {
         Debug.Log("Load Game...");
             
-        float playerPositionX = PlayerPrefs.GetFloat("playerPositionX");
+        /*float playerPositionX = PlayerPrefs.GetFloat("playerPositionX");
         float playerPositionY = PlayerPrefs.GetFloat("playerPositionY");
         float playerPositionZ = PlayerPrefs.GetFloat("playerPositionZ");
         Vector3 playerPosition = new Vector3(playerPositionX, playerPositionY, playerPositionZ);
@@ -43,6 +44,6 @@ public class Sceneload : MonoBehaviour
                   "maxhealth " + HealthSystem._healthMax + "currentxp: " + levelSystem.CurrentXp + " Level: " +
                   levelSystem);
 
-        Player.transform.position = playerPosition;
+        Player.transform.position = playerPosition;*/
     }
 }
