@@ -554,8 +554,6 @@ GameObject:
   - component: {fileID: 7274040187232111802}
   - component: {fileID: 7274040187232111805}
   - component: {fileID: 7274040187232111784}
-  - component: {fileID: 7274040187232111804}
-  - component: {fileID: 5721215841297467053}
   - component: {fileID: 6038959290312617746}
   m_Layer: 0
   m_Name: Female B
@@ -812,55 +810,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7274040187232111804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274483430250063846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980d2d23078587b489190758f06854a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
-  xpPerLevel: 100
-  player: {fileID: 0}
-  experienceUpdated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  leveledUp:
-    m_PersistentCalls:
-      m_Calls: []
-  levelUpEffect: {fileID: 0}
-  healthPerLevel: 10
-  manaPerLevel: 10
---- !u!114 &5721215841297467053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274483430250063846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51fb871064af34bf893a7140f8b82946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attractorRadius: 10
 --- !u!114 &6038959290312617746
 MonoBehaviour:
   m_ObjectHideFlags: 0

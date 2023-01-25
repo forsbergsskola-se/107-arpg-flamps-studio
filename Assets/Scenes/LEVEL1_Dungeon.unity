@@ -41835,6 +41835,8 @@ PrefabInstance:
       objectReference: {fileID: 1496873848}
     m_RemovedComponents:
     - {fileID: 7274040187232111784, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
+    - {fileID: 7274040187232111804, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
+    - {fileID: 5721215841297467053, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e91211c60a934fa41805ecfa84738d3a, type: 3}
 --- !u!1 &1042619487 stripped
 GameObject:
@@ -41888,23 +41890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 851227370}
---- !u!114 &1042619527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042619487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3277ea4a3d0bce46b442ff8f595617b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageReceived: 10
-  healthRestored: 10
-  amount2Regen: 1
-  healthbar: {fileID: 0}
-  _levelSystem: {fileID: 0}
 --- !u!1001 &1044309124
 PrefabInstance:
   m_ObjectHideFlags: 0
