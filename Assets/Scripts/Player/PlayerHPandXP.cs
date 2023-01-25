@@ -47,8 +47,10 @@ namespace Player
             get => _healthCur;
             set
             {
-                OnHealthChange(value);
-                _healthCur = value;
+                int newHealth = Mathf.Clamp(value, 0, healthMax);  
+                     
+                OnHealthChange(newHealth);
+                _healthCur = newHealth;
             }
         }
     
