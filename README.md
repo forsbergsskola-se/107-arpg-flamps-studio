@@ -6,7 +6,7 @@
 
 ## Description
 
-![Forslayer Trailer](https://www.youtube.com/watch?v=WBtggAEyshw)
+[Forslayer Trailer] ( https://www.youtube.com/watch?v=WBtggAEyshw )
 
 The repository for the award winning (nominations, awards pending) Forslayer
 
