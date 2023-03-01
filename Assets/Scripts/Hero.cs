@@ -2,68 +2,57 @@ using System.Collections;
 using Enemies;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Hero : MonoBehaviour
 {
-    public enum WeaponType
-    {
-        Sword,
-        Axe
-    }
-
     private static readonly int Attack1 = Animator.StringToHash("Attack");
 
-    // all of these are needed
-    public Sword sword;
-
-    public Axe axe;
-
-    //public Health HP;
     public EquippedWeapon equippedWeapon;
-
-    //public GameObject enemy;
     public bool canAttack = true;
+    public float attackRange = 2.5f;
+
     private Animator _anim;
 
-    private void Start()
+    private void Awake()
     {
         _anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (var enemyGameObject in enemies)
-        {
-            var enemy = enemyGameObject.GetComponent<Enemy>();
+        if (!Input.GetMouseButtonDown(0)) 
+            return;
+        
+        if (!canAttack)
+            return;
 
-            //checks if player is close enough to allow attacking and attacks if yes.
-            if (Input.GetMouseButtonDown(
-                    0)) //condition will have to be changed to match the player movement from stewart.
+        foreach (var enemy in GameManager.enemies)
+        {
+            if (IsWithinAttackRange(enemy))
             {
-                var distance = enemy.transform.position - transform.position;
-                if (canAttack && distance.magnitude < 2.5f)
-                {
-                    transform.LookAt(enemy.transform);
-                    Swing(enemy);
-                }
+                transform.LookAt(enemy.transform);
+                Swing(enemy);
+                break;
             }
         }
     }
 
-    private void Swing(Enemy enemyTarget) //plays the animation for attacking and activates attack cooldown.
+    bool IsWithinAttackRange(Enemy enemy)
     {
-        canAttack = false;
-
-        _anim.SetTrigger(Attack1);
-        enemyTarget.Hurt(equippedWeapon.damage);
-
-        StartCoroutine(ResetAttackCooldown());
+        return Vector3.Distance(enemy.transform.position, transform.position) < attackRange;
     }
 
-    private IEnumerator ResetAttackCooldown()
+    private void Swing(Enemy enemyTarget) //plays the animation for attacking and activates attack cooldown.
     {
-        yield return new WaitForSeconds(equippedWeapon.attackCooldown);
+        _anim.SetTrigger(Attack1);
+        enemyTarget.Hurt(equippedWeapon.damage);
+        StartCoroutine(ActivateCoolDown());
+    }
 
+    private IEnumerator ActivateCoolDown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(equippedWeapon.attackCooldown);
         canAttack = true;
     }
 }

@@ -1,37 +1,39 @@
-using Player;
 using TMPro;
 using UnityEngine;
 
-public class PlayerLevelDisplay : MonoBehaviour
+namespace Player
 {
-    public TextMeshProUGUI levelText;
-    public LevelSystem levelSystem;
-
-    private void Start()
+    public class PlayerLevelDisplay : MonoBehaviour
     {
-        OnLeveledUp(levelSystem.CurrentLevel);
-        OnExperienceUpdated(levelSystem.CurrentXp, levelSystem.XpPerLevel);
-    }
+        public TextMeshProUGUI levelText;
+        public LevelSystem levelSystem;
 
-    private void OnEnable()
-    {
-        levelSystem.leveledUp.AddListener(OnLeveledUp);
-        levelSystem.experienceUpdated.AddListener(OnExperienceUpdated);
-    }
+        private void Start()
+        {
+            OnLeveledUp(levelSystem.CurrentLevel);
+            OnExperienceUpdated(levelSystem.CurrentXp, levelSystem.XpPerLevel);
+        }
 
-    private void OnDisable()
-    {
-        levelSystem.leveledUp.RemoveListener(OnLeveledUp);
-        levelSystem.experienceUpdated.RemoveListener(OnExperienceUpdated);
-    }
+        private void OnEnable()
+        {
+            levelSystem.leveledUp.AddListener(OnLeveledUp);
+            levelSystem.experienceUpdated.AddListener(OnExperienceUpdated);
+        }
 
-    private void OnLeveledUp(int currentLevel)
-    {
-        levelText.text = "Level: " + currentLevel;
-    }
+        private void OnDisable()
+        {
+            levelSystem.leveledUp.RemoveListener(OnLeveledUp);
+            levelSystem.experienceUpdated.RemoveListener(OnExperienceUpdated);
+        }
+
+        private void OnLeveledUp(int currentLevel)
+        {
+            levelText.text = "Level: " + currentLevel;
+        }
     
-    private void OnExperienceUpdated(int currentXp, int xpRequired)
-    {
-        //update xp bar or whatever.
+        private void OnExperienceUpdated(int currentXp, int xpRequired)
+        {
+            //update xp bar or whatever.
+        }
     }
 }

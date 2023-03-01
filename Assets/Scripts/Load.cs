@@ -23,7 +23,7 @@ public class Load : MonoBehaviour
             float playerPositionY = PlayerPrefs.GetFloat("playerPositionY");
             float playerPositionZ = PlayerPrefs.GetFloat("playerPositionZ");
             Vector3 playerPosition = new Vector3(playerPositionX, playerPositionY, playerPositionZ);
-            moveToClickPoint.SetPlayerDestination(playerPosition);
+            moveToClickPoint.PlayerDestination = playerPosition;
             moveToClickPoint.target = null;
             HealthSystem._healthMax = PlayerPrefs.GetInt("MaxHealth");
             HealthSystem._healthCurrent = PlayerPrefs.GetInt("playerHealth");

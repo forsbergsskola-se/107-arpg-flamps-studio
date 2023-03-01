@@ -1,18 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ManaBar : MonoBehaviour
+namespace Player
 {
-    public Slider slider;
-
-    public void SetManaMax(int mana)
+    public class ManaBar : MonoBehaviour
     {
-        slider.maxValue = mana;
-        slider.value = mana;
-    }
+        public Slider slider;
 
-    public void SetManaCurrent(int mana)
-    {
-        slider.value = mana;
+        public void SetManaMax(int mana)
+        {
+            slider.maxValue = mana;
+            slider.value = mana;
+        }
+
+        public void SetManaCurrent(int mana)
+        {
+            slider.value = mana;
+        }
     }
 }

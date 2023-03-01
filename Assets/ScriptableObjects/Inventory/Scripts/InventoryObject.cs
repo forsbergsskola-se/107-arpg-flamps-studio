@@ -6,12 +6,13 @@ using System.IO;
 using UnityEditor;
 using System.Runtime.Serialization;
 
-[CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
+
+[CreateAssetMenu(fileName = "New InventoryData", menuName = "InventoryData System/InventoryData")]
 public class InventoryObject : ScriptableObject
 {
     public string savePath;
     public ItemDatabaseObject database;
-    public Inventory Container;
+    public InventoryData Container;
 
 
     public void AddItem(Item _item, int _amount)
@@ -91,7 +92,7 @@ public class InventoryObject : ScriptableObject
 
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
-           Inventory newContainer = (Inventory)formatter.Deserialize(stream);
+            InventoryData newContainer = (InventoryData)formatter.Deserialize(stream);
             for (int i = 0; i < Container.Items.Length; i++)
             {
                 Container.Items[i].UpdateSlot(newContainer.Items[i].ID, newContainer.Items[i].item, newContainer.Items[i].amount);
@@ -102,11 +103,11 @@ public class InventoryObject : ScriptableObject
     [ContextMenu("Clear")]
     public void Clear()
     {
-        Container = new Inventory();
+        Container = new InventoryData();
     }
 }
 [System.Serializable]
-public class Inventory
+public class InventoryData
 {
     public InventorySlot[] Items = new InventorySlot[28];
 }

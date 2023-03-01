@@ -1,7 +1,15 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using Enemies;
 using JetBrains.Annotations;
 using Player;
 using UnityEngine;
+
+public class GameManager
+{
+    public static HashSet<Enemy> enemies = new HashSet<Enemy>();
+}
 
 namespace Enemies
 {
@@ -56,6 +64,15 @@ namespace Enemies
         private static PlayerHPandXP _playerBarsRef;
         private static PlayerHPandXP GetPlayerHPandXPRef() => _playerBarsRef ??= FindObjectOfType<PlayerHPandXP>();
 
+        void OnEnable()
+        {
+            GameManager.enemies.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            GameManager.enemies.Remove(this);
+        }
 
         // Public State
         [CanBeNull]

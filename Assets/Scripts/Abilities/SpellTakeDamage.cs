@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellTakeDamage : MonoBehaviour
+namespace Abilities
 {
-    [SerializeField] private int damageAmount;
-    private void OnTriggerEnter(Collider other)
+    public class SpellTakeDamage : MonoBehaviour
     {
-        //Apply spell effects to whatever we hit.
-        //Apply hit particle effects
-        //Apply sound effects
+        [SerializeField] private int damageAmount;
+        private void OnTriggerEnter(Collider other)
+        {
+            //Apply spell effects to whatever we hit.
+            //Apply hit particle effects
+            //Apply sound effects
         
-        if (other.gameObject.CompareTag("Player"))
-        {
-            return;
-        }
+            if (other.gameObject.CompareTag("Player"))
+            {
+                return;
+            }
 
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            var enemyHealth = other.GetComponent<HealthComponent>();
-            enemyHealth.TakeDamage(damageAmount);
-        }
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                var enemyHealth = other.GetComponent<HealthComponent>();
+                enemyHealth.TakeDamage(damageAmount);
+            }
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

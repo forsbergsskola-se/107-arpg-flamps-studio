@@ -1,21 +1,24 @@
 using UnityEngine;
 
 //Attach this to enemy
-public class HealthComponent : MonoBehaviour
+namespace Abilities
 {
-    [SerializeField] private float maxHealth = 50f;
-    private float _currentHealth;
-
-    private void Awake()
+    public class HealthComponent : MonoBehaviour
     {
-        _currentHealth = maxHealth;
-    }
+        [SerializeField] private float maxHealth = 50f;
+        private float _currentHealth;
 
-    public void TakeDamage(float damageToApply)
-    {
-        _currentHealth -= damageToApply;
-        Debug.Log(_currentHealth);
+        private void Awake()
+        {
+            _currentHealth = maxHealth;
+        }
 
-        if (_currentHealth <= 0) Destroy(gameObject);
+        public void TakeDamage(float damageToApply)
+        {
+            _currentHealth -= damageToApply;
+            Debug.Log(_currentHealth);
+
+            if (_currentHealth <= 0) Destroy(gameObject);
+        }
     }
 }

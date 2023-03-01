@@ -1,71 +1,107 @@
 // MoveToClickPoint.cs
+
 using UnityEngine;
 using UnityEngine.AI;
-    
-public class MoveToClickPoint : MonoBehaviour
+using UnityEngine.Serialization;
+
+public static class Foo
 {
-    [SerializeField] private NavMeshAgent player;
-    [SerializeField] private Animator anim;
-    [SerializeField] public static float distanceToTarget = 2f;
-    
-    public Transform target;
-    private Camera mainCam;
-    public Vector3 playerDestination;
-    public bool destinationUpdated; // added flag
-        
-    void Awake() 
+    public static bool TryGetComponentInParent<T>(this Component self, out T component)
     {
-        mainCam = Camera.main;
-        player = GetComponent<NavMeshAgent>();
+        component = self.GetComponentInParent<T>();
+        return component != null;
     }
-        
-    void Update()
+} 
+
+namespace Player
+{
+    
+    public class Chaseable : MonoBehaviour{}
+    
+    [RequireComponent(typeof(NavMeshAgent))]
+    public class MoveToClickPoint : MonoBehaviour
     {
-        anim.SetFloat("isWalking", player.velocity.magnitude/player.speed);
+        [SerializeField] private NavMeshAgent player;
+        [SerializeField] private Animator anim;
+        public float distanceToTarget = 2f;
+    
+        public Transform target;
+        private Camera mainCam;
+        [SerializeField] private Vector3 _playerDestination;
 
-        GetDestination();
-
-        if (target != null)
+        public Vector3 PlayerDestination
         {
-            var between = target.position - transform.position;
+            set
+            {
+                _playerDestination = value;
+                destinationUpdated = true;
+            }
+        }
+        public bool destinationUpdated; // added flag
+        
+        void Awake() 
+        {
+            mainCam = Camera.main;
+            player = GetComponent<NavMeshAgent>();
+        }
+
+        void Update()
+        {
+            anim.SetFloat("isWalking", player.velocity.magnitude/player.speed);
+
+            GetDestination();
+
+            if (target != null)
+            {
+                var between = target.position - transform.position;
             
-            if(between.magnitude <= distanceToTarget)
+                if(between.magnitude <= distanceToTarget)
+                    return;
+            
+                player.SetDestination(target.position);
+            }
+            else if (destinationUpdated) // added check
+            {
+                player.SetDestination(_playerDestination);
+                destinationUpdated = false;
+            }
+        }
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        private void GetDestination()
+        {
+            if (!Input.GetMouseButtonDown(1)) 
+                return;
+        
+            if (!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out var hit)) 
                 return;
             
-            player.SetDestination(target.position);
+            if(hit.collider.TryGetComponentInParent<Chaseable>(out var foo)) //This means we hit a follow Target
+            {
+                Debug.Log("Target assigned : "+hit.transform.gameObject.name);
+                FollowTarget(hit);
+            }
+            else
+            {
+                WalkToPoint(hit);
+            }
         }
-        else if (destinationUpdated) // added check
-        {
-            player.SetDestination(playerDestination);
-            destinationUpdated = false;
-        }
-    }
 
-    private void GetDestination()
-    {
-        if (!Input.GetMouseButtonDown(1)) 
-            return;
-        
-        if (!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out var hit)) 
-            return;
-            
-        if(hit.collider.CompareTag("Enemy")) //This means we hit a follow Target
+        private void WalkToPoint(RaycastHit hit)
         {
-            Debug.Log("Target assigned : "+hit.transform.gameObject.name); 
-            target = hit.transform;
+            StopFollow();
+            PlayerDestination = hit.point;
         }
-        else
+
+        private void StopFollow()
         {
             target = null;
-            playerDestination = hit.point;
-            destinationUpdated = true; // set flag
         }
-    }
 
-    public void SetPlayerDestination(Vector3 destination) // added method
-    {
-        playerDestination = destination;
-        destinationUpdated = true;
+        private void FollowTarget(RaycastHit hit)
+        {
+            target = hit.transform;
+        }
     }
 }
 

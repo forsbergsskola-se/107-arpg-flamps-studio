@@ -1,49 +1,52 @@
 using UnityEngine;
 
 //attach to spellPrefabs
-[RequireComponent(typeof(SphereCollider))]
-[RequireComponent(typeof(Rigidbody))]
-public class Spell : MonoBehaviour
+namespace Abilities
 {
-    public SpellSO spellToCast;
-
-    protected SphereCollider MyCollider;
-    protected Rigidbody MyRigidbody;
-
-    private void Awake()
+    [RequireComponent(typeof(SphereCollider))]
+    [RequireComponent(typeof(Rigidbody))]
+    public class Spell : MonoBehaviour
     {
-        MyCollider = GetComponent<SphereCollider>();
-        MyCollider.isTrigger = true;
-        MyCollider.radius = spellToCast.spellRadius;
+        public SpellSO spellToCast;
 
-        MyRigidbody = GetComponent<Rigidbody>();
-        MyRigidbody.isKinematic = true;
+        protected SphereCollider MyCollider;
+        protected Rigidbody MyRigidbody;
 
-        Destroy(gameObject, spellToCast.lifetime);
-    }
+        private void Awake()
+        {
+            MyCollider = GetComponent<SphereCollider>();
+            MyCollider.isTrigger = true;
+            MyCollider.radius = spellToCast.spellRadius;
 
-    private void Update()
-    {
-        if (spellToCast.speed > 0) transform.Translate(Vector3.forward * (spellToCast.speed * Time.deltaTime));
-    }
+            MyRigidbody = GetComponent<Rigidbody>();
+            MyRigidbody.isKinematic = true;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //Apply spell effects to whatever we hit.
-        //Apply hit particle effects
-        //Apply sound effects
+            Destroy(gameObject, spellToCast.lifetime);
+        }
+
+        private void Update()
+        {
+            if (spellToCast.speed > 0) transform.Translate(Vector3.forward * (spellToCast.speed * Time.deltaTime));
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            //Apply spell effects to whatever we hit.
+            //Apply hit particle effects
+            //Apply sound effects
         
-        if (other.gameObject.CompareTag("Player"))
-        {
-            return;
-        }
+            if (other.gameObject.CompareTag("Player"))
+            {
+                return;
+            }
 
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            var enemyHealth = other.GetComponent<HealthComponent>();
-            enemyHealth.TakeDamage(spellToCast.damageAmount);
-        }
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                var enemyHealth = other.GetComponent<HealthComponent>();
+                enemyHealth.TakeDamage(spellToCast.damageAmount);
+            }
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

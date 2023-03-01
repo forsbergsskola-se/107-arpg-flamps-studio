@@ -1,19 +1,22 @@
 using UnityEngine;
 
-public class ManaPickup : MonoBehaviour
+namespace Inventory
 {
-    public float pickupDistance = 1f;
-    public GameObject player;
-
-    void Update()
+    public class ManaPickup : MonoBehaviour
     {
-        float distance = Vector3.Distance(player.transform.position, transform.position);
+        public float pickupDistance = 1f;
+        public GameObject player;
 
-        if(distance <= pickupDistance)
+        void Update()
         {
-            Debug.Log("Player touches item");
-            player.GetComponent<InventorySystem>().AddItem("item02");
-            Destroy(gameObject);
+            float distance = Vector3.Distance(player.transform.position, transform.position);
+
+            if(distance <= pickupDistance)
+            {
+                Debug.Log("Player touches item");
+                player.GetComponent<InventorySystem>().AddItem("item02");
+                Destroy(gameObject);
+            }
         }
     }
 }

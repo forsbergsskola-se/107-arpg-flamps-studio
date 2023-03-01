@@ -1,46 +1,47 @@
-using System;
-using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class XpBar : MonoBehaviour
+namespace Player
 {
-    public LevelSystem levelSystem;
-    public Slider slider;
-
-    private void Start()
+    public class XpBar : MonoBehaviour
     {
-        OnExperienceUpdated(levelSystem.CurrentXp, levelSystem.XpPerLevel);
-    }
+        public LevelSystem levelSystem;
+        public Slider slider;
 
-    private void OnEnable()
-    {
-        if(levelSystem == null)
-            return;
+        private void Start()
+        {
+            OnExperienceUpdated(levelSystem.CurrentXp, levelSystem.XpPerLevel);
+        }
+
+        private void OnEnable()
+        {
+            if(levelSystem == null)
+                return;
             
-        levelSystem.experienceUpdated.AddListener(OnExperienceUpdated);
-    }
+            levelSystem.experienceUpdated.AddListener(OnExperienceUpdated);
+        }
 
-    private void OnDisable()
-    {
-        if(levelSystem != null)
-            levelSystem.experienceUpdated.RemoveListener(OnExperienceUpdated);
-    }
+        private void OnDisable()
+        {
+            if(levelSystem != null)
+                levelSystem.experienceUpdated.RemoveListener(OnExperienceUpdated);
+        }
 
-    private void OnExperienceUpdated(int currentXp, int XpPerLevel)
-    {
-        SetXp2NextLevel(XpPerLevel);
-        SetXpCurrent(currentXp);
-    }
+        private void OnExperienceUpdated(int currentXp, int XpPerLevel)
+        {
+            SetXp2NextLevel(XpPerLevel);
+            SetXpCurrent(currentXp);
+        }
 
-    public void SetXp2NextLevel(int xp)
-    {
-        slider.maxValue = xp;
-        slider.value = xp;
-    }
+        public void SetXp2NextLevel(int xp)
+        {
+            slider.maxValue = xp;
+            slider.value = xp;
+        }
 
-    public void SetXpCurrent(int xp)
-    {
-        slider.value = xp;
+        public void SetXpCurrent(int xp)
+        {
+            slider.value = xp;
+        }
     }
 }

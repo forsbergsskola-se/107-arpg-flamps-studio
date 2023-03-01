@@ -1,18 +1,21 @@
 using UnityEngine;
 
-public class SwordPickup : MonoBehaviour
+namespace Inventory
 {
-    public float pickupDistance = 1f;
-    public GameObject player;
-
-    void Update()
+    public class SwordPickup : MonoBehaviour
     {
-        float distance = Vector3.Distance(player.transform.position, transform.position);
+        public float pickupDistance = 1f;
+        public GameObject player;
 
-        if(distance <= pickupDistance)
+        void Update()
         {
-            player.GetComponent<InventorySystem>().AddItem("item03");
-            Destroy(gameObject);
+            float distance = Vector3.Distance(player.transform.position, transform.position);
+
+            if(distance <= pickupDistance)
+            {
+                player.GetComponent<InventorySystem>().AddItem("item03");
+                Destroy(gameObject);
+            }
         }
     }
 }

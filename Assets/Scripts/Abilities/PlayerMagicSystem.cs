@@ -1,90 +1,93 @@
 using System;
+using Player;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 //attach to player
-public class PlayerMagicSystem : MonoBehaviour
+namespace Abilities
 {
-    //spellPrefabs here
-    [SerializeField] private Spell spellToCast;
-
-    [SerializeField] private int maxMana = 100;
-    [SerializeField] private int currentMana;
-    [SerializeField] private int manaRechargeRate = 2;
-    [SerializeField] private float timeToWaitForRecharge = 1f;
-    [SerializeField] private float timeBetweenCast = 2f;
-
-    [SerializeField] private Transform castPoint;
-    private Animator _anim;
-    private static readonly int CastSpell1 = Animator.StringToHash("CastSpell");
-    
-    [SerializeField] private bool _castingMagic;
-    private float _currentCastTimer;
-    private float _currentManaRechageTimer;
-    
-    [SerializeField] private ManaBar manaBar;
-
-    private void Awake()
+    public class PlayerMagicSystem : MonoBehaviour
     {
-        currentMana = maxMana;
-        _anim = GetComponent<Animator>();
-    }
+        //spellPrefabs here
+        [SerializeField] private Spell spellToCast;
 
-    private void Update()
-    {
+        [SerializeField] private int maxMana = 100;
+        [SerializeField] private int currentMana;
+        [SerializeField] private int manaRechargeRate = 2;
+        [SerializeField] private float timeToWaitForRecharge = 1f;
+        [SerializeField] private float timeBetweenCast = 2f;
+
+        [SerializeField] private Transform castPoint;
+        private Animator _anim;
+        private static readonly int CastSpell1 = Animator.StringToHash("CastSpell");
+    
+        [SerializeField] private bool _castingMagic;
+        private float _currentCastTimer;
+        private float _currentManaRechageTimer;
+    
+        [SerializeField] private ManaBar manaBar;
+
+        private void Awake()
+        {
+            currentMana = maxMana;
+            _anim = GetComponent<Animator>();
+        }
+
+        private void Update()
+        {
         
-        var isSpellCastingHeldDown = Input.GetKeyDown(KeyCode.Alpha1);
-        var hasEnoughMana = currentMana - spellToCast.spellToCast.manaCost >= 0f;
+            var isSpellCastingHeldDown = Input.GetKeyDown(KeyCode.Alpha1);
+            var hasEnoughMana = currentMana - spellToCast.spellToCast.manaCost >= 0f;
 
-        if (!_castingMagic && isSpellCastingHeldDown && hasEnoughMana)
-        {
-            CastSpell();
-        }
-
-        if (_castingMagic)
-        {
-            _currentCastTimer += Time.deltaTime;
-            if (_currentCastTimer > timeBetweenCast) _castingMagic = false;
-        }
-
-        if (currentMana < maxMana && !_castingMagic && !isSpellCastingHeldDown)
-        {
-            _currentManaRechageTimer += Time.deltaTime;
-
-            if (_currentManaRechageTimer > timeToWaitForRecharge)
+            if (!_castingMagic && isSpellCastingHeldDown && hasEnoughMana)
             {
-                currentMana += Convert.ToInt32(manaRechargeRate * Time.deltaTime);
-                if (currentMana > maxMana) currentMana = maxMana;
+                CastSpell();
+            }
 
-                // Update the mana bar
-                manaBar.SetManaCurrent(currentMana);
+            if (_castingMagic)
+            {
+                _currentCastTimer += Time.deltaTime;
+                if (_currentCastTimer > timeBetweenCast) _castingMagic = false;
+            }
+
+            if (currentMana < maxMana && !_castingMagic && !isSpellCastingHeldDown)
+            {
+                _currentManaRechageTimer += Time.deltaTime;
+
+                if (_currentManaRechageTimer > timeToWaitForRecharge)
+                {
+                    currentMana += Convert.ToInt32(manaRechargeRate * Time.deltaTime);
+                    if (currentMana > maxMana) currentMana = maxMana;
+
+                    // Update the mana bar
+                    manaBar.SetManaCurrent(currentMana);
+                }
             }
         }
-    }
 
-    private void CastSpell()
-    {
-        // _anim.SetTrigger(CastSpell1);
-        // Instantiate(spellToCast, castPoint.position, castPoint.rotation);
-        
-        if (currentMana >= spellToCast.spellToCast.manaCost)
+        private void CastSpell()
         {
-            _castingMagic = true;
-            _currentCastTimer = 0;
-            _currentManaRechageTimer = 0;
+            // _anim.SetTrigger(CastSpell1);
+            // Instantiate(spellToCast, castPoint.position, castPoint.rotation);
+        
+            if (currentMana >= spellToCast.spellToCast.manaCost)
+            {
+                _castingMagic = true;
+                _currentCastTimer = 0;
+                _currentManaRechageTimer = 0;
             
-            // Reduce the player's mana by the cost of the spell
-            currentMana -= spellToCast.spellToCast.manaCost;
+                // Reduce the player's mana by the cost of the spell
+                currentMana -= spellToCast.spellToCast.manaCost;
 
-            // Update the mana bar
-            // manaBar.SetManaCurrent(currentMana);
+                // Update the mana bar
+                // manaBar.SetManaCurrent(currentMana);
 
-            // Play the spell casting animation
-            _anim.SetTrigger(CastSpell1);
+                // Play the spell casting animation
+                _anim.SetTrigger(CastSpell1);
             
-            // Instantiate the spell prefab
-            Instantiate(spellToCast, castPoint.position, castPoint.rotation);
+                // Instantiate the spell prefab
+                Instantiate(spellToCast, castPoint.position, castPoint.rotation);
             
+            }
         }
     }
 }
